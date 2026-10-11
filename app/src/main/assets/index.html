@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pl"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/><title>SRG Mobile v1.4.17 CLASSIC + GPS FIX</title><style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#070a09;color:#eef1ee;font-family:Arial,Helvetica,sans-serif;overflow:hidden}button{font:inherit}.app{width:100vw;height:100vh;display:grid;grid-template-columns:116px 1fr;background:#070a09}.rail{background:#080c0a;border-right:1px solid #26302a;padding:6px;display:flex;flex-direction:column;gap:6px}.rail button{border-radius:4px;border:1px solid #20c742;background:linear-gradient(#158b2c,#0a651f);color:#fff;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.14)}.courseBtn{height:58px!important;background:linear-gradient(#646765,#424542)!important;border-color:#7d817e!important;font-weight:800;font-size:16px}.iconBtn{height:58px;display:grid;place-items:center}.iconBtn svg{width:37px;height:37px}.rail .active{outline:2px solid #e6eee6;outline-offset:-4px;filter:brightness(1.1)}.railBottom{margin-top:auto}.version{font:700 10px/1.25 Arial,sans-serif;color:#e4e8e4;padding:2px 3px 7px}.menuBtn{width:100%;height:53px;font-size:18px;font-weight:900;background:linear-gradient(#1bd23a,#087c1c)!important}.content{position:relative;background:radial-gradient(circle at 60% 20%,#101817,#050807 65%);overflow:hidden}.view{position:absolute;inset:0;display:none;padding:8px 12px 10px}.view.active{display:flex;flex-direction:column}.top{height:48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.12);font-weight:800;font-size:26px}.clock{font:800 28px/1 'Courier New',monospace}.dest{margin-top:6px;height:65px;display:grid;grid-template-columns:75px 1fr;align-items:center;background:linear-gradient(#20c83a,#08771a);border:1px solid #2be64f;border-radius:4px;font:800 29px/1 'Courier New',monospace;text-align:center}.line{height:100%;display:grid;place-items:center;border-right:2px solid rgba(0,0,0,.7);font-size:34px}.meta{display:grid;grid-template-columns:1fr 1fr;gap:12px 40px;padding:40px 9px 18px;font:800 20px/1.2 'Courier New',monospace}.right{text-align:right}.sched{margin-top:auto;display:grid;grid-template-columns:1.1fr .9fr;grid-template-areas:'bar bar' 'delay upcoming';gap:8px 18px}.bar{grid-area:bar;height:54px;display:grid;place-items:center;background:linear-gradient(#20c83a,#08771a);border:1px solid #2be64f;border-radius:4px;font:800 24px/1 'Courier New',monospace}.delay{grid-area:delay;display:grid;place-items:center;font:800 48px/1 'Courier New',monospace}.upcoming{grid-area:upcoming;display:flex;flex-direction:column;justify-content:center;gap:7px;font:800 17px/1.1 'Courier New',monospace}.controls{display:grid;grid-template-columns:78px 78px 78px 78px minmax(170px,1fr);gap:9px;margin-left:auto;width:min(100%,670px);padding-top:4px}.controls button{height:58px;border:1px solid #277e43;background:linear-gradient(#14462f,#0c2c20);color:#fff;border-radius:4px;font-size:30px;font-weight:900}.round{display:inline-grid;place-items:center;width:34px;height:34px;border:4px solid #fff;border-radius:50%;font-size:23px}.logout{background:linear-gradient(#20d23c,#07811b)!important;border-color:#31ed51!important;font-size:22px!important}.menuGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.menuGrid button{height:74px;border:1px solid #506157;background:linear-gradient(#173326,#10251b);color:#fff;border-radius:4px;font-weight:800;font-size:18px;text-align:left;padding:0 18px}.menuInfo{margin-top:12px;border:1px solid #3e4b43;background:#0b110e;padding:10px;font-size:12px;color:#abb5ad}.cameraGrid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;min-height:0;flex:1;margin-top:10px}.cam{position:relative;background:#000;border:2px solid #d7b400;overflow:hidden}.camLabel{position:absolute;left:10px;top:10px;border:1px solid #d7b400;background:#070707;padding:6px 10px;font-weight:800;font-size:13px}.camEmpty{position:absolute;inset:0;display:grid;place-items:center;color:#444;font:700 12px Arial}.camCourse{display:grid;grid-template-columns:.8fr 1.15fr 1.15fr 1fr;gap:8px;margin-top:8px}.infoBox,.camLogout{height:58px;border:1px solid #38463d;background:#0b110e;border-radius:4px;padding:7px 10px;display:flex;flex-direction:column;justify-content:center}.infoBox small{color:#9aa59d;font-size:10px}.infoBox b{font:800 17px/1.15 'Courier New',monospace}.camLogout{background:linear-gradient(#20d23c,#07811b);border-color:#31ed51;color:#fff;font-weight:900;font-size:18px;align-items:center}.soundPanel{width:min(760px,86%);margin:22px auto 0;border:1px solid #39473e;background:#07100b;padding:18px}.soundTitle{text-align:center;font:800 21px Georgia,serif;margin-bottom:16px}.soundTabs{display:flex;width:350px;margin-bottom:18px}.soundTabs button{height:40px;flex:1;background:linear-gradient(#4a4d4a,#292c29);border:1px solid #5d625e;color:#fff;font-weight:700}.soundTabs .active{background:linear-gradient(#34b4ce,#177f94)}.soundSelect{display:grid;grid-template-columns:1fr auto;align-items:center;font:700 17px Georgia,serif}.soundTarget{display:flex;gap:6px;align-items:center}.cyan{border:0;background:linear-gradient(#34b6ce,#16889d);color:white;border-radius:5px;height:42px;min-width:44px;font-size:22px}.soundLevel{margin-top:72px}.labels{display:grid;grid-template-columns:90px 1fr 90px;text-align:center;font:700 16px Georgia,serif}.levelRow{display:grid;grid-template-columns:55px 1fr 55px;gap:8px;align-items:center}.levelBar{height:50px;border:1px solid #68716b;background:#050706;position:relative}.fill{position:absolute;left:0;top:0;bottom:0;width:50%;background:#2ea8bf}.pct{position:absolute;inset:0;display:grid;place-items:center;color:#f4bf42;font:800 22px Georgia,serif}.soundActions{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:68px}.soundActions button{height:58px;border:0;background:linear-gradient(#34b6ce,#16889d);color:#fff;border-radius:4px;font-size:28px;font-weight:900}
+
+/* R&G MENU 1/2 + 2/2 from real unit photos */
+.rgMenuWrap{flex:1;min-height:0;display:flex;flex-direction:column;padding-top:8px}.rgPageLabel{align-self:flex-end;font:800 17px/1 Arial,sans-serif;margin:2px 4px 8px;color:#f0f2ef}.rgMenuPage{display:none;flex:1;min-height:0}.rgMenuPage.active{display:flex;flex-direction:column}.rgTiles{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:14px 18px;flex:1;min-height:0;padding:8px 28px 10px}.rgTile{border:1px solid #4fa66c;background:linear-gradient(180deg,#3ec94f 0%,#2fa746 60%,#2a9340 100%);box-shadow:inset 0 1px rgba(255,255,255,.25);color:#eef6ef;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font:800 16px/1.12 Arial,sans-serif;text-align:center;padding:10px;cursor:pointer;text-shadow:0 1px 1px rgba(0,0,0,.25)}.rgTile.blue{background:linear-gradient(#6e8ba4,#566f85);border-color:#8ca5bb}.rgTile.disabled{opacity:.45}.rgIcon{width:52px;height:52px;display:grid;place-items:center;font-size:45px;line-height:1;color:white}.rgIcon svg{width:50px;height:50px;stroke:#fff;fill:none;stroke-width:4}.rgMenuFooter{display:grid;grid-template-columns:1fr 210px;gap:10px;margin-top:8px}.rgNext,.rgClose{height:56px;border:1px solid #4fa66c;border-radius:5px;background:linear-gradient(#45cf56,#2d9c43);color:#f6faf6;font:800 17px Arial,sans-serif;cursor:pointer}.rgClose{font-size:0}.rgClose:before{content:'×';display:inline-grid;place-items:center;width:34px;height:34px;border:4px solid #fff;border-radius:50%;font-size:29px;line-height:1}.rgMenuPage.p2 .rgTiles{grid-auto-rows:minmax(150px,1fr);align-content:start}.rgMenuPage.p2 .rgTile:nth-child(n+6){visibility:hidden}.rgMenuTitle{font:800 18px Arial,sans-serif;color:#dbe7dd;opacity:.0;height:0;overflow:hidden}@media(max-width:800px){.rgTiles{gap:10px;padding:5px 12px}.rgTile{font-size:12px}.rgIcon{width:42px;height:42px;font-size:37px}.rgMenuFooter{grid-template-columns:1fr 150px}.rgNext,.rgClose{height:46px}.rgPageLabel{font-size:14px}}
+
+.camVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}.validatorOff:after{content:'×';position:absolute;color:#e33131;font:900 58px/1 Arial;transform:rotate(-12deg)}.rail .iconBtn{position:relative}.toast{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:#202522;border:1px solid #536158;color:white;padding:10px 18px;z-index:50;opacity:0;pointer-events:none;transition:.18s;border-radius:4px}.toast.show{opacity:1}.settingsTiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:32px;flex:1}.settingTile{border:1px solid #4fa66c;background:linear-gradient(#3ec94f,#28933f);color:white;border-radius:8px;font-weight:800;font-size:18px;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center}.settingTile b{font-size:36px}.backTile{background:linear-gradient(#66736c,#465049);border-color:#7b8980}.transWrap,.rjWrap{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1;padding:14px}.transCard{border:1px solid #3e4c43;background:#0a100d;padding:14px;border-radius:5px}.transCard.grow{flex:1;min-height:0}.transHeader{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.transHeader span{font-size:12px;color:#aeb8b0}.transGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.transGrid label,.transCard>label{display:flex;flex-direction:column;gap:6px;color:#cdd5ce;font-size:12px}.transGrid select,.transCard input{height:40px;background:#060a08;color:#fff;border:1px solid #4c5b51;padding:0 10px}.transButtons{display:flex;gap:8px;margin-top:10px}.transButtons button,.bigAction,.wideBack{height:44px;border:1px solid #4fa66c;background:linear-gradient(#35b74a,#237f37);color:white;font-weight:800;border-radius:4px;padding:0 16px}.transStatus{margin-top:10px;font-size:13px}.transStatus b{color:#f1c94b}.protoNote{margin-top:8px;font-size:11px;color:#9aa69d}.transCard pre{height:130px;overflow:auto;background:#020403;border:1px solid #273229;color:#c8e7cf;padding:9px;font:12px/1.35 monospace}.wideBack{align-self:flex-start;background:linear-gradient(#66736c,#465049);border-color:#7b8980}.rjStatus{margin-top:10px;color:#bec9c0}.rjInfo{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.rjInfo div{background:#050806;border:1px solid #29342d;padding:8px}.rjInfo small{display:block;color:#8f9b92}.variantList{margin-top:10px;display:grid;grid-template-columns:repeat(2,1fr);gap:7px;max-height:280px;overflow:auto}.variantBtn{min-height:50px;border:1px solid #3f5b49;background:#0e1d15;color:#fff;text-align:left;padding:8px}.variantBtn.active{outline:2px solid #2cd54c}.dim{color:#7e8a81}.genericPanel{width:min(760px,88%);margin:28px auto;border:1px solid #3e4b43;background:#0b110e;padding:24px;text-align:center}.genericPanel #genericIcon{font-size:52px}.genericPanel h2{font-size:28px}.genericPanel p{color:#bac5bc;min-height:60px}.genericPanel .wideBack{margin-top:18px}.confirmOverlay{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;place-items:center;z-index:100}.confirmOverlay.open{display:grid}.confirmBox{width:370px;background:#0d130f;border:1px solid #526056;padding:24px;text-align:center;font-size:20px}.confirmBtns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}.confirmBtns button{height:56px;background:#173226;color:#fff;border:1px solid #4fa66c;font-size:26px}.confirmBtns button:last-child{background:linear-gradient(#36bd4c,#218137)}
+
+.coursePickerOverlay{position:fixed;inset:0;background:rgba(0,0,0,.76);display:none;place-items:center;z-index:120}.coursePickerOverlay.open{display:grid}.coursePickerBox{width:min(900px,88vw);max-height:82vh;background:#07100b;border:1px solid #526056;padding:18px;box-shadow:0 12px 40px #000}.coursePickerHead{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #304038;padding-bottom:10px;margin-bottom:12px}.coursePickerHead b{font-size:23px}.coursePickerHead button{width:48px;height:42px;background:#5a625d;color:#fff;border:1px solid #7c867f;font-size:24px;font-weight:900}.coursePickerList{display:grid;grid-template-columns:1fr 1fr;gap:9px;max-height:62vh;overflow:auto}.coursePickBtn{min-height:70px;background:linear-gradient(#173326,#10251b);border:1px solid #4fa66c;color:#fff;text-align:left;padding:10px 14px;border-radius:4px}.coursePickBtn strong{display:block;font-size:18px}.coursePickBtn span{display:block;color:#b9c5bc;margin-top:5px;font-size:13px}.coursePickBtn:active{filter:brightness(1.25)}.coursePickerGroup{grid-column:1/-1;color:#dce9df;font:700 14px Arial,sans-serif;padding:9px 4px 3px;border-top:1px solid #304038;margin-top:4px}.coursePickBtn.manualDuty{border-color:#d5b52b;background:linear-gradient(#343016,#231f10)}.coursePickBtn.manualDuty span{color:#f0df8a}@media(max-width:760px){.coursePickerBox{width:94vw}.coursePickerList{grid-template-columns:1fr}.coursePickBtn{min-height:58px}}
+
+/* === v1.4.0 DRIVER FLOW: idle calendar + task/trip selection + GPS + end-of-duty === */
+.idleView{padding:10px 14px!important;background:radial-gradient(circle at 55% 20%,#111a17,#050807 70%)}
+.idleGrid{display:grid;grid-template-columns:.95fr 1.45fr;gap:26px;align-items:start;flex:1;padding:18px 26px 16px}
+.idleInfo{padding:16px 8px;font-family:'Courier New',monospace}.idleTime{font-size:46px;font-weight:900;letter-spacing:1px}.idleWeekday{font-size:25px;font-weight:800;margin-top:5px}.idleDate{font-size:25px;font-weight:800;margin-top:6px}.idleVehicle{font-size:20px;font-weight:800;margin-top:14px}.idleHint{margin-top:45px;color:#9baa9f;font:700 15px Arial,sans-serif}
+.calendarCard{padding:10px 16px 16px}.calendarHead{display:grid;grid-template-columns:46px 1fr 46px;align-items:center;margin-bottom:8px}.calendarHead button{height:38px;border:1px solid #329749;background:linear-gradient(#249c3e,#146e2b);color:#fff;font-size:20px}.calendarHead b{text-align:center;font:800 20px 'Courier New',monospace}.calendarDow,.calendarGrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}.calendarDow div{font:800 12px Arial;color:#cbd5cd;padding:5px}.calendarCell{height:44px;display:grid;place-items:center;border:1px solid #27342c;background:#09100c;font:800 15px 'Courier New',monospace;color:#e9eeea}.calendarCell.dim{color:#4f5d54}.calendarCell.sun{color:#ee6a61}.calendarCell.today{background:linear-gradient(#2bc247,#17812e);border-color:#59df70;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.18)}
+.driverFlow{padding:9px 12px!important;background:radial-gradient(circle at 60% 20%,#111a17,#050807 68%)}.flowTop{height:42px;border-bottom:1px solid #34433a;display:flex;align-items:center;justify-content:space-between;font:800 17px Arial}.flowBody{flex:1;min-height:0;display:grid;grid-template-columns:52% 48%;gap:10px;padding:8px 0}.taskLeft{display:grid;grid-template-columns:52px 1fr;gap:7px;min-height:0}.taskArrows{display:flex;flex-direction:column;gap:5px}.taskArrows button{height:48px;border:1px solid #5b795f;background:linear-gradient(#4aa95a,#32783d);color:#fff;font-size:21px}.taskList{border:1px solid #4c5c52;background:#0b110e;overflow:auto}.taskTabHead{display:grid;grid-template-columns:1fr 1fr;height:35px}.taskTabHead button{border:0;border-bottom:1px solid #53645a;background:#111812;color:#e9ece9;font-weight:800}.taskTabHead button.active{background:#3f8f52}.taskItem{height:45px;width:100%;border:0;border-bottom:1px solid #26332b;background:#0a100d;color:#dce4dd;text-align:left;padding:0 12px;font:800 17px 'Courier New',monospace}.taskItem.active{background:linear-gradient(#58b66a,#3c8f4e);color:#fff}.taskRight{border:1px solid #4a5a51;background:#0b110e;padding:18px 16px;display:flex;flex-direction:column}.flowField{margin-bottom:18px}.flowField label{display:block;margin-bottom:7px;font:800 16px Arial;color:#d8e0da}.flowValue,.flowSelect{height:46px;width:100%;border:1px solid #617069;background:#18221c;color:#fff;padding:0 12px;font:800 18px 'Courier New',monospace}.availableTypes{font:800 16px Arial;margin-top:7px;color:#cbd5cd}.flowConfirm{margin-top:auto;height:58px;border:1px solid #40cf59;background:linear-gradient(#42c556,#2b8e3d);color:#fff;font:900 20px Arial}.tripCard{width:min(760px,88%);margin:18px auto 0;border:1px solid #536158;background:#0b110e;padding:16px 18px}.tripRow{margin-bottom:12px}.tripRow label{display:block;font:800 15px Arial;margin-bottom:5px}.tripBox{height:47px;border:1px solid #5f7066;background:#17201b;display:flex;align-items:center;padding:0 12px;font:800 19px 'Courier New',monospace;color:#f2f3f2}.tripDual{display:grid;grid-template-columns:1fr 1fr;gap:24px}.tripCounter{text-align:center;font:900 19px 'Courier New',monospace;margin:12px 0}.tripControls{display:grid;grid-template-columns:68px 1fr 1fr 68px;gap:7px}.tripControls button{height:52px;border:1px solid #61a86b;background:linear-gradient(#49a75a,#347b40);color:#fff;font-size:25px;font-weight:900}.tripControls .tripCancel{background:linear-gradient(#626862,#3d423e)}.tripControls .tripOk{background:linear-gradient(#47bd5b,#2b893d)}.noTrips{color:#e1c65f;font-weight:800;margin-top:8px}
+.endDutyOverlay{position:fixed;inset:0;background:#030504;display:none;z-index:500;color:#f3f5f3;cursor:pointer}.endDutyOverlay.open{display:flex;flex-direction:column;align-items:center;justify-content:center}.endDutyMain{font:900 38px/1.25 'Courier New',monospace;text-align:center;letter-spacing:.8px}.endDutyTask{font:800 24px 'Courier New',monospace;color:#61dc72;margin-top:18px}.endDutyTap{position:absolute;bottom:28px;left:0;right:0;text-align:center;font:700 16px Arial;color:#aeb8b0}
+.gpsWrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px;flex:1;min-height:0}.gpsCard{border:1px solid #3e4c43;background:#0a100d;padding:16px}.gpsState{font:900 22px 'Courier New',monospace;color:#f2cb56}.gpsGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.gpsKV{border:1px solid #29372f;background:#050906;padding:10px}.gpsKV small{display:block;color:#94a097}.gpsKV b{display:block;margin-top:4px;font:800 17px 'Courier New',monospace}.gpsBtns{display:flex;gap:8px;margin-top:12px}.gpsBtns button{height:46px;padding:0 18px;border:1px solid #4fa66c;background:linear-gradient(#38b94d,#237e37);color:#fff;font-weight:800}.gpsNote{font-size:13px;line-height:1.4;color:#b4c0b7}.gpsSatOnly{color:#f2d069;font-weight:800}
+@media(max-width:820px){.idleTime{font-size:35px}.idleWeekday,.idleDate{font-size:20px}.calendarCell{height:37px}.taskItem{height:39px;font-size:14px}.tripCard{width:94%}}
+/* Potwierdzenie zakończenia kursu — styl SRG-6000P */
+.tripFinishOverlay{position:fixed;inset:0;background:#080b0a;z-index:550;display:none;align-items:center;justify-content:center;padding:28px}
+.tripFinishOverlay.open{display:flex}
+.tripFinishDialog{width:min(740px,94vw);display:flex;flex-direction:column;align-items:center;gap:clamp(32px,10vh,78px)}
+.tripFinishQuestion{font:800 clamp(19px,2.8vw,27px)/1.36 'Courier New',monospace;color:#e6e9e6;letter-spacing:.15px;text-align:center;max-width:690px}
+.tripFinishButtons{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:min(430px,80vw)}
+.tripFinishButtons button{height:clamp(54px,10vh,72px);background:linear-gradient(#4a9e5c,#337b44);border:1px solid #579d65;border-radius:5px;color:#fff;font:800 clamp(16px,2.3vw,23px)/1 'Courier New',monospace;cursor:pointer}
+.tripFinishButtons button:active{filter:brightness(1.24)}
+.tripFinishButtons button:focus-visible{outline:3px solid #dcefdc;outline-offset:3px}
+@media(max-width:600px){.tripFinishDialog{gap:32px}.tripFinishQuestion{font-size:19px}.tripFinishButtons{width:100%}}
+
+/* v1.4.6: ekran WYMelduj ze zdjęcia SRG-6000P; reszta UI = CLASSIC v1.4.0 */
+.logoutOptionsOverlay,.driverChangeOverlay{position:fixed;inset:0;z-index:600;background:rgba(5,8,7,.97);display:none;place-items:center;padding:16px}
+.logoutOptionsOverlay.open,.driverChangeOverlay.open{display:grid}
+.logoutOptionsBox{display:flex;flex-direction:column;gap:4px;width:min(400px,78vw);max-height:94vh}
+.logoutOptionsBox button{display:block;width:100%;min-height:clamp(44px,10vh,62px);padding:8px 12px;border:1px solid #579d65;border-radius:5px;background:linear-gradient(#4a9e5c,#337b44);color:#f5fff4;font:800 clamp(12px,1.75vw,19px)/1.3 'Courier New',monospace;text-align:center;cursor:pointer}
+.logoutOptionsBox .logoutClose{margin-top:clamp(12px,3vh,29px);font-size:27px}
+.logoutOptionsBox button:focus-visible,.driverChangeBox button:focus-visible,.driverChangeBox input:focus-visible{outline:3px solid #e8ffdc;outline-offset:2px}
+.logoutOptionsBox button:active,.driverChangeBox button:active{filter:brightness(1.22)}
+.driverChangeBox{width:min(470px,92vw);border:1px solid #42564a;background:#0a110c;padding:clamp(15px,3vw,27px);font-family:'Courier New',monospace;text-align:center;box-shadow:0 10px 38px #0008}
+.driverChangeBox h2{margin:0 0 18px;font:800 clamp(18px,2.8vw,25px)/1.3 'Courier New',monospace;color:#edf4ed}
+.driverChangeBox label{display:block;text-align:left;font-size:15px;margin-bottom:6px}
+.driverChangeBox input{width:100%;height:clamp(46px,9vh,60px);border:1px solid #52715d;background:#07100b;color:white;font:800 24px 'Courier New',monospace;text-align:center;padding:6px}
+.driverChangeError{min-height:22px;margin-top:8px;color:#f19b92;font:600 13px Arial}
+.driverChangeActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.driverChangeActions button{min-height:48px;border:1px solid #579d65;border-radius:5px;background:linear-gradient(#4a9e5c,#337b44);color:white;font:800 clamp(14px,2vw,18px) 'Courier New',monospace;cursor:pointer}
+@media(max-width:550px){.logoutOptionsBox{width:min(380px,92vw)}.logoutOptionsBox button{font-size:clamp(12px,3vw,16px)}}
+
+/* v1.4.6: informacja o odjeździe z pierwszego przystanku, klasyczny SRG */
+.tripDepartureHint{text-align:center;font:700 12px 'Courier New',monospace;color:#afc4b3;min-height:16px;margin:-5px 0 6px}
+.tripCard .noTrips{font:700 12px/1.25 'Courier New',monospace;margin:0 0 5px;text-align:center}
+
+/* v1.4.8: ekran rozpoczęcia kursu z oryginalnego SRG; bez przebudowy pozostałych ekranów */
+.courseStartedOverlay{position:fixed;inset:0;background:#101615;z-index:580;display:none;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;padding:22px;color:#d8dfda;font-family:'Courier New',monospace}
+.courseStartedOverlay.open{display:flex}
+.courseStartedMain{font-size:clamp(17px,2.2vw,24px);font-weight:800;text-align:center;letter-spacing:.25px}
+.courseStartedTap{position:absolute;left:10px;right:10px;bottom:clamp(28px,8vh,67px);font-size:clamp(13px,1.8vw,18px);font-weight:700;text-align:center;color:#bfc8c0}
+.courseStartedOverlay:focus{outline:none}
+
+/* v1.4.13: bezpieczny powrót z wyboru kursówki; styl klasyczny v1.4.0 */
+.flowTitleActions{display:flex;align-items:center;gap:14px;min-width:0}
+.flowTitleActions span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.flowTitleActions #dutyBack{width:32px;height:30px;flex:none;border:1px solid #748077;background:linear-gradient(#586359,#303b34);color:#f5f5f5;border-radius:3px;font-size:18px;font-weight:800;cursor:pointer}
+.flowTitleActions #dutyBack:active{filter:brightness(1.2)}
+@media(max-width:650px){.flowTitleActions{gap:6px}.flowTitleActions #dutyBack{width:28px}}
+
+/* v1.4.13: rzeczywista poprawka telefonu w pionie — SRG CLASSIC bez zmian na ekranach poziomych.
+   Lista zadań i Zatwierdź nie mogą znajdować się poza widocznym obszarem. */
+@media (orientation: portrait) and (max-width: 820px) {
+  html,body { height: 100%; }
+  .app { grid-template-columns: 72px minmax(0, 1fr); height: 100vh; height: 100dvh; }
+  .rail { padding: 4px; gap: 4px; }
+  .rail .courseBtn { height: 47px !important; font-size: 12px; }
+  .rail .iconBtn { height: 48px; }
+  .rail .iconBtn svg { width: 28px; height: 28px; }
+  .rail .menuBtn { height: 45px; font-size: 13px; }
+  .rail .version { font-size: 8px; overflow-wrap: anywhere; }
+  .view.driverFlow { padding: 7px 8px 8px !important; overflow-y: auto; overscroll-behavior: contain; }
+  .driverFlow .flowTop { height: 38px; flex: 0 0 38px; min-height: 38px; gap: 4px; font-size: clamp(11px, 3vw, 16px); }
+  .driverFlow .flowTop .clock { font-size: clamp(11px, 3vw, 16px); }
+  .driverFlow .flowTitleActions { gap: 5px; min-width: 0; }
+  .driverFlow .flowTitleActions #dutyBack { width: 29px; height: 29px; flex: 0 0 29px; }
+  .driverFlow .flowBody { display: flex; flex: 0 0 auto; flex-direction: column; min-height: 0; gap: 8px; padding: 8px 0; overflow: visible; }
+  .driverFlow .taskLeft { display: grid; flex: 0 0 auto; height: clamp(138px, 23vh, 186px); grid-template-columns: 36px minmax(0, 1fr); gap: 5px; }
+  .driverFlow .taskArrows button { height: 39px; font-size: 16px; }
+  .driverFlow .taskList { min-width: 0; min-height: 0; overflow-y: auto; }
+  .driverFlow .taskTabHead { height: 31px; }
+  .driverFlow .taskTabHead button { font-size: clamp(9px, 2.7vw, 13px); line-height: 1.1; padding: 3px 1px; white-space: normal; }
+  .driverFlow .taskItem { height: 39px; font-size: 14px; }
+  .driverFlow .taskRight { flex: 0 0 auto; min-width: 0; min-height: 0; padding: 12px; }
+  .driverFlow .flowField { margin-bottom: 12px; }
+  .driverFlow .flowField label { margin-bottom: 5px; font-size: 13px; }
+  .driverFlow .flowValue, .driverFlow .flowSelect { height: 40px; font-size: 15px; }
+  .driverFlow .availableTypes { font-size: 12px; margin-top: 0; }
+  .driverFlow .flowConfirm { flex: 0 0 auto; width: 100%; height: 50px; min-height: 50px; margin-top: 16px; border-radius: 4px; font-size: 17px; cursor: pointer; }
+}
+
+/* v1.4.13: pole DROGA w telefonie bez zawijania cyfr na trzy linie */
+@media(max-width:600px) and (orientation:portrait){#course .meta{column-gap:8px;row-gap:8px;font-size:16px;padding-top:20px}#course .meta .right:has(#courseRoad){grid-column:1/-1;text-align:left}#courseRoad{white-space:nowrap;font-size:14px}}
+</style></head><body><div class="app"><aside class="rail"><button class="courseBtn active" id="courseRailBtn">KURS</button><button aria-label="Dzwonek" class="iconBtn" data-action="bell"><svg viewbox="0 0 64 64"><path d="M32 9c-9 0-15 7-15 17v8c0 5-2 8-7 12-2 2-1 5 2 5h40c3 0 4-3 2-5-5-4-7-7-7-12v-8c0-10-6-17-15-17Z" fill="#fff"></path><path d="M25 54h14c-1 4-4 6-7 6s-6-2-7-6Z" fill="#fff"></path></svg></button><button aria-label="Dźwięk" class="iconBtn" data-go="sound"><svg viewbox="0 0 64 64"><path d="M10 25h12l13-11c2-2 5 0 5 3v30c0 3-3 5-5 3L22 39H10c-3 0-5-2-5-5v-4c0-3 2-5 5-5Z" fill="#fff"></path><path d="M45 23c4 3 6 6 6 9s-2 7-6 9M49 17c7 5 10 10 10 15s-3 11-10 16" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="4"></path></svg></button><button aria-label="Kamery" class="iconBtn" data-go="cameras"><svg viewbox="0 0 64 64"><path d="M13 23h12l6-6h18c4 0 6 2 6 6v20c0 4-2 6-6 6H20c-4 0-6-2-6-6V31L6 36V26Z" fill="#fff"></path><circle cx="39" cy="33" fill="#1d5d2b" r="9"></circle><circle cx="39" cy="33" fill="#dce8dd" r="5"></circle></svg></button><button aria-label="Kasownik" class="iconBtn" data-action="validator" id="validatorBtn"><svg viewbox="0 0 64 64"><rect fill="#ffd92b" height="50" rx="5" width="30" x="17" y="7"></rect><rect fill="#66715d" height="14" rx="2" width="20" x="22" y="14"></rect><rect fill="#b7dbb7" height="8" rx="1" width="16" x="24" y="17"></rect><rect fill="#8b7719" height="5" width="20" x="22" y="34"></rect><circle cx="32" cy="48" fill="#65705d" r="5"></circle></svg></button><div class="railBottom"><div class="version">SRG Mobile<br/>v1.4.17 CLASSIC</div><button class="menuBtn" data-go="menu">MENU</button></div></aside><main class="content">
+<section class="view active idleView" id="idle"><div class="top"><span>SRG-6000P</span><span class="clock" data-clock="1">--:--:--</span></div><div class="idleGrid"><div class="idleInfo"><div class="idleTime" id="idleTime">--:--:--</div><div class="idleWeekday" id="idleWeekday">—</div><div class="idleDate" id="idleDate">---- -- --</div><div class="idleVehicle">Nr pojazdu: <span id="idleVehicle">75</span></div><div class="idleHint">Naciśnij KURS, aby wybrać zadanie / kursówkę.</div></div><div class="calendarCard"><div class="calendarHead"><button id="calPrev">◀</button><b id="calTitle">—</b><button id="calNext">▶</button></div><div class="calendarDow"><div>P</div><div>W</div><div>Ś</div><div>C</div><div>P</div><div>S</div><div>N</div></div><div class="calendarGrid" id="calendarGrid"></div></div></div></section>
+<section class="view driverFlow" id="dutySelect"><div class="flowTop"><div class="flowTitleActions"><span>Wybór kursówki / zadania</span><button id="dutyBack" type="button" aria-label="Wróć bez zmiany kursówki">✕</button></div><span class="clock" data-clock="1">--:--:--</span></div><div class="flowBody"><div class="taskLeft"><div class="taskArrows"><button id="taskTop">↻</button><button id="taskUp">▲</button><button id="taskDown">▼</button></div><div class="taskList"><div class="taskTabHead"><button class="active">Nazwa zadania</button><button>Napisy specjalne</button></div><div id="taskItems"></div></div></div><div class="taskRight"><div class="flowField"><label>Linia:</label><div class="flowValue" id="dutyLine">1</div></div><div class="flowField"><label>Typ dnia:</label><select class="flowSelect" id="dayType"><option>O</option><option>R</option><option>W</option><option>N</option></select></div><div class="availableTypes">Dostępne typy: <span id="availableTypes">O R W N</span></div><button class="flowConfirm" id="dutyConfirm">Zatwierdź</button></div></div></section>
+<section class="view driverFlow" id="tripSelect"><div class="flowTop"><span>Wybór kursu</span><span class="clock" data-clock="1">--:--:--</span></div><div class="tripCard"><div class="tripRow"><label>Kierunek:</label><div class="tripBox" id="tripDirection">—</div></div><div class="tripRow"><label>Przystanek początkowy:</label><div class="tripBox" id="tripStartStop">—</div></div><div class="tripDual"><div class="tripRow"><label>Linia:</label><div class="tripBox" id="tripLine">1</div></div><div class="tripRow"><label>Brygada:</label><div class="tripBox" id="tripBrigade">1</div></div></div><div class="tripCounter" id="tripCounter">—/— (--:--)</div><div class="tripDepartureHint" id="tripDepartureHint" aria-live="polite">Odjazd z przystanku początkowego</div><div class="noTrips" id="tripNoFuture" hidden>Brak późniejszych odjazdów w tej kursówce — wybierz ręcznie strzałkami.</div><div class="tripControls"><button class="tripCancel" id="tripCancel">⊗</button><button id="tripPrev">◀</button><button id="tripNext">▶</button><button class="tripOk" id="tripOk">✓</button></div></div></section>
+<section class="view" id="course"><div class="top"><span>Linia / Kierunek:</span><span class="clock" data-clock="1">15:54:08</span></div><div class="dest"><span class="line" id="courseLine">4</span><span id="courseDest">ZAJEZDNIA MKS</span></div><div class="meta"><div>Zadanie: <b id="courseTask">4/21/90</b></div><div class="right">Nr pojazdu: <b id="vehicleNo">75</b></div><div>Przystanek: <b id="courseStopCount">1/73</b></div><div class="right">Droga: <b id="courseRoad">234 / 790 (-556)</b></div></div><div class="sched"><div class="bar" id="courseCurrent">15:55 ULICA SZKOLNA (1035)</div><div class="delay" id="courseDelay">-0:45</div><div class="upcoming"><div id="courseNext1">15:56 ULICA EL...</div><div id="courseNext2">16:01 ALEJA MŁODZIEŻY</div></div></div><div class="controls"><button id="prevStop">◀</button><button id="cancelStop"><span class="round">×</span></button><button id="confirmStop"><span class="round">✓</span></button><button id="nextStop">▶</button><button class="logout" id="logoutCourse">Wymelduj</button></div></section>
+<section class="view" data-clock-scope="1" id="menu"><div class="rgMenuWrap"><div class="rgPageLabel" id="rgPageLabel">Strona: 1/2</div>
+<div class="rgMenuPage active" id="rgPage1"><div class="rgTiles">
+<button class="rgTile" data-open="fault"><span class="rgIcon">⚠</span><span>Awaria</span></button>
+<button class="rgTile" data-open="validators"><span class="rgIcon">▣</span><span>Kasowniki</span></button>
+<button class="rgTile" data-open="extraLines"><span class="rgIcon">⤨</span><span>Linie<br/>Dodatkowe</span></button>
+<button class="rgTile" data-open="sms"><span class="rgIcon">⚙</span><span>Wyślij<br/>SMS</span></button>
+<button class="rgTile" data-open="measurements"><span class="rgIcon">⌁</span><span>Pomiary</span></button>
+<button class="rgTile" data-open="info"><span class="rgIcon">ⓘ</span><span>Informacje</span></button>
+<button class="rgTile" data-open="tests"><span class="rgIcon">ⓘ</span><span>Testy<br/>Urządzeń</span></button>
+<button class="rgTile" data-open="clockSettings"><span class="rgIcon">◷</span><span>Zegar</span></button>
+</div><div class="rgMenuFooter"><button class="rgNext" data-menu-page="2">Następna strona</button><button aria-label="Zamknij" class="rgClose" data-go="course"></button></div></div>
+<div class="rgMenuPage p2" id="rgPage2"><div class="rgTiles">
+<button class="rgTile" data-go="settings"><span class="rgIcon">⚙</span><span>Ustawienia</span></button>
+<button class="rgTile" data-open="displaySettings"><span class="rgIcon">⚙</span><span>Ustawienia<br/>Ekranu</span></button>
+<button class="rgTile blue" data-open="videoDownload"><span class="rgIcon">▧</span><span>Pliki wideo<br/>(pobieranie)</span></button>
+<button class="rgTile blue" data-open="videoPreview"><span class="rgIcon">▧</span><span>Pliki wideo<br/>(podgląd)</span></button>
+<button class="rgTile" data-open="autoDiag"><span class="rgIcon">ⓘ</span><span>Auto<br/>Diagnostyka</span></button>
+</div><div class="rgMenuFooter"><button class="rgNext" data-menu-page="1">Następna strona</button><button aria-label="Zamknij" class="rgClose" data-go="course"></button></div></div>
+</div></section>
+<section class="view" id="cameras"><div class="top"><span>KAMERY</span><span class="clock" data-clock="1">15:54:08</span></div><div class="cameraGrid"><div class="cam"><span class="camLabel">PRZÓD</span><video autoplay="" class="camVideo" id="frontVideo" muted="" playsinline=""></video><span class="camEmpty" id="frontStatus">KAMERA PRZEDNIA — niedostępna</span></div><div class="cam"><span class="camLabel">KANAŁ 2</span></div><div class="cam"><span class="camLabel">TYŁ</span><video autoplay="" class="camVideo" id="rearVideo" muted="" playsinline=""></video><span class="camEmpty" id="rearStatus">KAMERA TYLNA — niedostępna</span></div><div class="cam"><span class="camLabel">KANAŁ 4</span></div></div><div class="camCourse"><div class="infoBox"><small>ODCHYŁKA</small><b id="camDelay">-0:45</b></div><div class="infoBox"><small>AKTUALNY PRZYSTANEK</small><b id="camCurrent">ULICA SZKOLNA</b></div><div class="infoBox"><small>KOŃCOWY PRZYSTANEK</small><b id="camEnd">ZAJEZDNIA MKS</b></div><button class="camLogout" id="cameraLogout">Wymelduj</button></div></section>
+<section class="view" id="sound"><div class="top"><span>DŹWIĘK</span><span class="clock" data-clock="1">15:54:08</span></div><div class="soundPanel"><div class="soundTitle">Regulacja głośności</div><div class="soundTabs"><button class="active" id="soundSpeakerTab">Głośnik</button><button id="soundMicTab">Mikrofon(WRG)</button></div><div class="soundSelect"><div>Wybór głośnika (wewn/zewn)</div><div class="soundTarget"><span id="speakerTarget">Głośnik: Wewn.</span><button class="cyan" id="speakerPrev">◀</button><button class="cyan" id="speakerNext">▶</button></div></div><div class="soundLevel"><div class="labels"><span>Min: 80</span><span>Poziom głośności</span><span>Max: 100</span></div><div class="levelRow"><button class="cyan" id="volumeMinus">−</button><div class="levelBar"><div class="fill" id="volumeFill"></div><div class="pct" id="volumePct">90%</div></div><button class="cyan" id="volumePlus">+</button></div></div><div class="soundActions"><button id="soundCancel">✖</button><button id="soundSave">✔</button></div></div></section>
+<section class="view subView" id="settings"><div class="top"><span>USTAWIENIA</span><span class="clock" data-clock="1">--:--:--</span></div>
+<div class="settingsTiles">
+<button class="settingTile" data-go="transmission"><b>⚙</b><span>Ustawienia<br/>transmisji</span></button>
+<button class="settingTile" data-go="rjSettings"><b>RJ</b><span>Rozkład jazdy<br/>/ plik RJ</span></button>
+<button class="settingTile" data-open="vehicle"><b>75</b><span>Pojazd</span></button>
+<button class="settingTile" data-go="gps"><b>GPS</b><span>GPS / pozycja</span></button>
+<button class="settingTile" data-go="sound"><b>♪</b><span>Dźwięk</span></button>
+<button class="settingTile backTile" data-go="menu"><b>×</b><span>Powrót</span></button>
+</div>
+</section><section class="view subView" id="transmission"><div class="top"><span>USTAWIENIA TRANSMISJI</span><span class="clock" data-clock="1">--:--:--</span></div>
+<div class="transWrap">
+<div class="transCard">
+<div class="transHeader"><b>USB → RS-485</b><span id="rs485Capability">Sprawdzanie interfejsu…</span></div>
+<div class="transGrid">
+<label>Tryb<select id="transMode"><option value="mock">MOCK / symulacja</option><option value="serial">USB / Web Serial</option></select></label>
+<label>Baud<select id="baud"><option>9600</option><option>19200</option><option>38400</option><option>57600</option><option selected="">115200</option><option>250000</option><option>360000</option></select></label>
+<label>Parity<select id="parity"><option value="none">None</option><option value="even">Even</option><option value="odd">Odd</option></select></label>
+<label>Stop bits<select id="stopBits"><option>1</option><option>2</option></select></label>
+</div>
+<div class="transButtons"><button id="connectBtn">Połącz</button><button id="disconnectBtn">Rozłącz</button><button id="addrTestBtn">Adresy 17–20</button></div>
+<div class="transStatus">Status: <b id="rs485Status">ROZŁĄCZONY</b></div>
+</div>
+<div class="transCard">
+<label>RAW HEX TX<input id="txHex" spellcheck="false" value="AA 55 01 00"/></label>
+<div class="transButtons"><button id="sendBtn">TX</button><button id="clearLog">Wyczyść log</button></div>
+<pre id="serialLog">[BOOT] Ustawienia transmisji gotowe.
+</pre>
+<div class="protoNote">Nie wysyłamy zmyślonych ramek R&amp;G. Test adresów 17–20 pokazuje zakres diagnostyczny; właściwy protokół tablicy podepniemy po potwierdzeniu ramek.</div>
+</div>
+<button class="wideBack" data-go="settings">← Wróć do ustawień</button>
+</div>
+</section><section class="view subView" id="rjSettings"><div class="top"><span>ROZKŁAD JAZDY / RJ</span><span class="clock" data-clock="1">--:--:--</span></div>
+<div class="rjWrap">
+<div class="transCard">
+<input accept=".011,.rj,.bin,application/octet-stream" hidden="" id="rjFile" type="file"/>
+<div class="transButtons"><button class="bigAction" id="rjBuiltin">Wbudowany RJ: rj261011(3).011</button><button class="bigAction" id="rjChoose">Wybierz inny plik RJ</button></div>
+<div class="rjStatus" id="rjStatusBox">Ładowanie wbudowanego RJ…</div>
+<div class="rjInfo" id="rjInfo"></div>
+</div>
+<div class="transCard grow"><b>Warianty / linie</b><div class="variantList" id="variantList"><span class="dim">Wczytaj RJ, aby zobaczyć warianty.</span></div></div>
+<button class="wideBack" data-go="settings">← Wróć do ustawień</button>
+</div>
+</section><section class="view subView" id="gps"><div class="top"><span>GPS / GNSS</span><span class="clock" data-clock="1">--:--:--</span></div><div class="gpsWrap"><div class="gpsCard"><div class="gpsState" id="gpsState">WYŁĄCZONY</div><div class="gpsGrid"><div class="gpsKV"><small>Szerokość</small><b id="gpsLat">—</b></div><div class="gpsKV"><small>Długość</small><b id="gpsLon">—</b></div><div class="gpsKV"><small>Dokładność</small><b id="gpsAcc">—</b></div><div class="gpsKV"><small>Prędkość</small><b id="gpsSpeed">—</b></div><div class="gpsKV"><small>Kierunek</small><b id="gpsBearing">—</b></div><div class="gpsKV"><small>Źródło</small><b id="gpsSource">—</b></div></div><div class="gpsBtns"><button id="gpsStart">Uruchom GPS</button><button id="gpsStop">Zatrzymaj</button></div><p class="gpsNote" id="gpsHelp" role="status" aria-live="polite">Aby uruchomić GPS, dotknij „Uruchom GPS”. W APK zezwól na dokładną lokalizację.</p></div><div class="gpsCard"><b>Tryb offline</b><p class="gpsNote"><span class="gpsSatOnly">W aplikacji APK:</span> moduł Android używa lokalnego odbiornika GNSS/GPS tabletu (GPS_PROVIDER), więc pozycja nie wymaga internetu ani map.</p><p class="gpsNote">HTML uruchomiony przez HTTPS korzysta z Web Geolocation. Sam fallback przeglądarki nie gwarantuje źródła wyłącznie satelitarnego.</p><p class="gpsNote">Współrzędne 68 przystanków są dołączone do wbudowanego RJ w aplikacji. Automatyczna zmiana przystanków na podstawie GPS pozostaje nieaktywna.</p><button class="wideBack" data-go="settings">← Wróć do ustawień</button></div></div></section>
+<section class="view subView" id="generic"><div class="top"><span>FUNKCJA</span><span class="clock" data-clock="1">--:--:--</span></div>
+<div class="genericPanel"><div id="genericIcon">ⓘ</div><h2 id="genericTitle">Funkcja</h2><p id="genericText">—</p><div id="genericActions"></div><button class="wideBack" data-go="menu">← Wróć do MENU</button></div>
+</section><div class="toast" id="toast"></div></main></div><div class="coursePickerOverlay" id="coursePickerOverlay" aria-hidden="true"><div class="coursePickerBox"><div class="coursePickerHead"><b>Wybierz kurs</b><button id="coursePickerClose" type="button">×</button></div><div class="coursePickerList" id="coursePickerList"></div></div></div><div class="logoutOptionsOverlay" id="logoutOptionsOverlay" role="dialog" aria-modal="true" aria-label="Wymelduj — wybierz czynność" aria-hidden="true"><div class="logoutOptionsBox"><button type="button" id="logoutExitDuty">Wyjdź z kursówki</button><button type="button" id="logoutChangeDriver">Zmień kierowcę</button><button type="button" id="logoutFull">Wyjdź z kursówki i wyloguj kierowcę</button><button type="button" id="logoutCancel" class="logoutClose" aria-label="Anuluj i wróć">⊗</button></div></div><div class="driverChangeOverlay" id="driverChangeOverlay" role="dialog" aria-modal="true" aria-labelledby="driverChangeTitle" aria-hidden="true"><div class="driverChangeBox"><h2 id="driverChangeTitle">ZALOGUJ KIEROWCĘ</h2><label for="driverNumberInput">Numer kierowcy:</label><input id="driverNumberInput" type="text" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="Wpisz numer"/><div class="driverChangeError" id="driverChangeError" aria-live="polite"></div><div class="driverChangeActions"><button id="driverChangeCancel" type="button">ANULUJ</button><button id="driverChangeOk" type="button">ZATWIERDŹ</button></div></div></div><div class="tripFinishOverlay" id="tripFinishOverlay" role="dialog" aria-modal="true" aria-labelledby="tripFinishQuestion" aria-hidden="true"><div class="tripFinishDialog"><div class="tripFinishQuestion" id="tripFinishQuestion">Czy zakończyć realizację kursu i przejść do kolejnego kursu?</div><div class="tripFinishButtons"><button id="tripFinishYes" type="button">TAK</button><button id="tripFinishNo" type="button">NIE</button></div></div></div><div class="courseStartedOverlay" id="courseStartedOverlay" role="dialog" aria-modal="true" aria-label="Rozpoczęto kurs" aria-hidden="true" tabindex="-1"><div class="courseStartedMain">Rozpoczęto kurs.</div><div class="courseStartedTap">(Kliknij aby zamknąć)</div></div><div class="endDutyOverlay" id="endDutyOverlay"><div class="endDutyMain">ZAKOŃCZONO REALIZACJĘ KURSÓWKI</div><div class="endDutyTask" id="endDutyTask">—</div><div class="endDutyTap">(kliknij aby zamknąć)</div></div><script>(function(root){'use strict';
+const CP852="ÇüéâäůćçłëŐőîŹÄĆÉĹĺôöĽľŚśÖÜŤťŁ×čáíóúĄąŽžĘę¬źČş«»░▒▓│┤ÁÂĚŞ╣║╗╝Żż┐└┴┬├─┼Ăă╚╔╩╦╠═╬¤đĐĎËďŇÍÎě┘┌█▄ŢŮ▀ÓßÔŃńňŠšŔÚŕŰýÝţ´­˝˛ˇ˘§÷¸°¨˙űŘř■ ";
+function u16(b,o){return (b[o]<<8)|b[o+1]}function u32(b,o){return ((b[o]*0x1000000)+(b[o+1]<<16)+(b[o+2]<<8)+b[o+3])>>>0}function hex(n,w){return n.toString(16).toUpperCase().padStart(w||2,'0')}
+function decodeCP852(bytes){let s='';for(const c of bytes){if(c===0)break;if(c<128)s+=String.fromCharCode(c);else s+=CP852[c-128]||'�'}return s}function readZ(b,offset,limit){if(!Number.isInteger(offset)||offset<0||offset>=b.length)return'';const end=Math.min(b.length,limit||(offset+256));let p=offset;while(p<end&&b[p]!==0)p++;return decodeCP852(b.slice(offset,p)).trim()}
+function decodeRGDate(v){const day=v&31,month=(v>>5)&15,year=2000+((v>>9)&127);if(!day||!month||month>12)return null;return `${String(day).padStart(2,'0')}.${String(month).padStart(2,'0')}.${year}`}
+const SECTION_NAMES=['Txt','Vtr','Czs','Prz','Odc','Trs','Obo','Krs','Krw','Kwi','Cnz','Cnw','Cnt','Tpd','Kal','Rwsk','TKW'];
+function parseHeader(b){if(!(b instanceof Uint8Array))b=new Uint8Array(b);if(b.length<40)throw new Error('Plik jest za krótki, aby był RJ.');const totalLen=u32(b,3),headerLen=u16(b,7);if(headerLen<19||headerLen>b.length)throw new Error('Nieprawidłowa długość nagłówka RJ.');const h={crc:b[0],dateRaw:u16(b,1),date:decodeRGDate(u16(b,1)),totalLen,headerLen,structureVersion:b[9],fileNumber:b[10],ttr:{offset:u32(b,11),len:u32(b,15)},sections:{}};let p=19;for(const name of SECTION_NAMES){if(p+10>headerLen)break;const offset=u32(b,p),len=u32(b,p+4),recSize=u16(b,p+8);h.sections[name]={offset,len,recSize,count:recSize?Math.floor(len/recSize):0};p+=10}h.lengthMatches=totalLen===b.length;return h}
+function resolveText(b,h,ref){const txt=h.sections.Txt;if(!ref)return'';if(txt&&txt.recSize>=4&&ref>=txt.offset&&ref+4<=txt.offset+txt.len&&ref+4<=b.length){const ttrRef=u32(b,ref);return readZ(b,ttrRef,h.ttr.offset+h.ttr.len)}if(ref>=h.ttr.offset&&ref<h.ttr.offset+h.ttr.len)return readZ(b,ref,h.ttr.offset+h.ttr.len);return''}
+function parseStops(b,h){const s=h.sections.Prz;if(!s||!s.recSize||!s.count)return[];const stops=[];for(let i=0;i<s.count;i++){const a=s.offset+i*s.recSize;if(a+s.recSize>b.length||s.recSize<24)break;const id=u16(b,a),namePtr=u32(b,a+2),streetPtr=u32(b,a+16),srgPtr=u32(b,a+20);stops.push({index:i,address:a,id,name:resolveText(b,h,namePtr)||`Przystanek ${id}`,street:resolveText(b,h,streetPtr),srgName:resolveText(b,h,srgPtr)})}return stops}
+function parseVariants(b,h,stopByAddress){const v=h.sections.Vtr;if(!v||!v.recSize||!v.count||v.recSize<32)return[];const variants=[];for(let i=0;i<v.count;i++){const a=v.offset+i*v.recSize;if(a+v.recSize>b.length)break;const code=u16(b,a),variantNo=u16(b,a+2),line=decodeCP852(b.slice(a+4,a+9)).replace(/\0/g,'').trim()||String(code),directionPtr=u32(b,a+9),direction2Ptr=u32(b,a+13),descriptionPtr=u32(b,a+19),segmentCount=u16(b,a+25),routePtr=u32(b,a+27),transport=b[a+31]?String.fromCharCode(b[a+31]):'',routeStops=[],trs=h.sections.Trs,odc=h.sections.Odc;if(trs&&odc&&trs.recSize>=4&&odc.recSize>=10&&routePtr>=trs.offset){for(let j=0;j<segmentCount;j++){const trAddr=routePtr+j*trs.recSize;if(trAddr+4>b.length)break;const odcAddr=u32(b,trAddr);if(odcAddr<odc.offset||odcAddr+10>b.length)continue;const fromAddr=u32(b,odcAddr+2),toAddr=u32(b,odcAddr+6),from=stopByAddress.get(fromAddr),to=stopByAddress.get(toAddr);if(j===0&&from)routeStops.push(from);if(to&&(!routeStops.length||routeStops[routeStops.length-1].address!==to.address))routeStops.push(to)}}variants.push({index:i,address:a,code,variantNo,line,direction:resolveText(b,h,directionPtr),direction2:resolveText(b,h,direction2Ptr),description:resolveText(b,h,descriptionPtr),segmentCount,routePtr,transport,stops:routeStops})}return variants}
+function parseCourses(b,h,variants){const k=h.sections.Krs;if(!k||!k.recSize||!k.count||k.recSize<8)return[];const byAddress=new Map(variants.map(v=>[v.address,v])),courses=[];for(let i=0;i<k.count;i++){const a=k.offset+i*k.recSize;if(a+k.recSize>b.length)break;const variantPtr=u32(b,a),lineCode=u16(b,a+4),courseNo=u16(b,a+6),v=byAddress.get(variantPtr);courses.push({index:i,address:a,variantPtr,variantIndex:v?.index??null,line:v?.line||String(lineCode),courseNo,raw:[...b.slice(a,a+k.recSize)]})}return courses}
+function parse(input){const b=input instanceof Uint8Array?input:new Uint8Array(input),header=parseHeader(b),stops=parseStops(b,header),stopByAddress=new Map(stops.map(s=>[s.address,s])),variants=parseVariants(b,header,stopByAddress),courses=parseCourses(b,header,variants);return{header,stops,variants,courses,bytes:b.length}}
+root.RJParser={parse,parseHeader,decodeCP852,readZ,resolveText,hex};})(window);</script><script>(()=>{'use strict';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const state={roadStatus:'GPS NIEURUCHOMIONY',view:'idle',returnView:'idle',menuPage:1,validatorOn:false,volume:90,speaker:'Wewn.',pendingStop:null,routeIndex:0,rj:null,course:null,variant:null,streams:[],serial:null,writer:null,reader:null,connected:false,mode:'mock',selectedDuty:'S-25',dayType:'O',tripChoiceIndex:0,tripChoiceEntries:[],tripChoiceFromNext:false,tripChoiceNoFuture:false,calendarMonth:new Date().getMonth(),calendarYear:new Date().getFullYear(),gpsWatch:null,gpsLast:null,driverLoggedIn:true,driverNumber:'',driverChangeReason:null,courseDepartureAt:null,courseStartedNotified:false};
+const BUILTIN_RJ_NAME='rj261011(3).011';
+const BUILTIN_STOP_GPS={"1":[50.053823,21.406459,50],"2":[50.051913,21.413043,50],"3":[50.053822,21.425586,50],"4":[50.054918,21.436174,50],"5":[50.055699,21.443685,50],"6":[50.056249,21.449251,50],"7":[50.057621,21.462417,50],"8":[50.058577,21.471733,50],"9":[50.059833,21.483642,50],"10":[50.0620407,21.5045144,50],"11":[50.0624325,21.5185452,50],"12":[50.0620426,21.542991,50],"13":[50.0616079,21.5694649,50],"14":[50.0525443,21.6042519,50],"15":[50.0541128,21.6186379,50],"16":[50.0599736,21.6373635,50],"17":[50.066924,21.6587487,50],"18":[50.0691856,21.6879728,50],"19":[50.0698148,21.6998686,50],"20":[50.0706515,21.7113932,50],"21":[50.0697977,21.7274294,50],"22":[50.0702671,21.7550767,50],"23":[50.0709121,21.7810494,50],"24":[50.0715475,21.8058767,50],"25":[50.0718007,21.820075,50],"26":[50.0715551,21.8379229,50],"27":[50.0714562,21.8673544,50],"28":[50.0716827,21.8966562,50],"29":[50.0698546,21.9106875,50],"30":[50.0650148,21.9299834,50],"31":[50.0484339,21.9750921,50],"32":[50.0458578,21.9807497,50],"33":[50.0427306,21.993837,50],"34":[50.042142,22.003124,50],"35":[50.066665,21.924328,50],"36":[50.070693,21.907476,50],"37":[50.071904,21.896568,50],"38":[50.071601,21.866263,50],"39":[50.0524284,21.415306,50],"40":[50.042318,22.002638,50],"41":[50.042954,21.9947375,50],"42":[50.046089,21.981827,50],"43":[50.048107,21.976277,50],"44":[50.071305,21.8413188,50],"45":[50.071805,21.81728,50],"46":[50.0714978,21.8043087,50],"47":[50.0709129,21.7792319,50],"48":[50.0703704,21.7567765,50],"49":[50.069872,21.7268972,50],"50":[50.0706732,21.7106835,50],"51":[50.0698148,21.6998686,50],"52":[50.0691701,21.6872574,50],"53":[50.0667562,21.6577844,50],"54":[50.0592805,21.6354096,50],"55":[50.0540577,21.6179497,50],"56":[50.0525443,21.6042519,50],"57":[50.0616829,21.5694048,50],"58":[50.0620802,21.5448616,50],"59":[50.0624817,21.5200717,50],"60":[50.0619292,21.5029012,50],"61":[50.0601422,21.4857899,50],"62":[50.0585513,21.4705012,50],"63":[50.0578201,21.4633498,50],"64":[50.0560323,21.4469312,50],"65":[50.0556242,21.4425001,50],"66":[50.0548371,21.4353362,50],"67":[50.0539792,21.4270437,50],"68":[50.053873,21.406634,50]};
+
+const MANUAL_DUTIES=[
+{
+  id:'S-25',
+  label:'S-25',
+  trips:[
+    {tripNo:1,variantIndex:0,startTime:'16:00',endTime:'17:20'},
+    {tripNo:2,variantIndex:1,startTime:'17:20',endTime:'18:40'},
+    {tripNo:3,variantIndex:0,startTime:'19:45',endTime:'21:00'},
+    {tripNo:4,variantIndex:1,startTime:'21:30',endTime:'22:45'}
+  ]
+},
+{
+  id:'S-27',
+  label:'S-27',
+  trips:[
+    {tripNo:1,variantIndex:0,startTime:'05:05',endTime:'06:25'},
+    {tripNo:2,variantIndex:1,startTime:'06:30',endTime:'07:50'},
+    {tripNo:3,variantIndex:0,startTime:'08:15',endTime:'09:30'},
+    {tripNo:4,variantIndex:1,startTime:'10:45',endTime:'12:05'},
+    {tripNo:5,variantIndex:0,startTime:'12:45',endTime:'14:05'},
+    {tripNo:6,variantIndex:1,startTime:'14:20',endTime:'15:45'}
+  ]
+}
+];
+const BUILTIN_RJ_B64='HjVLAAAtMgEDAgEAAAEDAAAGagAAB20AAAFEAAQAACmvAAABOwAtAAAIsQAAAAAABwAACLEAAA4UADUAABbFAAAIQAAgAAAfBQAACqoADwAAFsUAAAAAABkAACrqAAAAoQAXAAAriwAAABwABAAAK6cAAAD1ACMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACycAAAAAAAHAAAsnAAAAAAAAwAAHwUAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALJwAAACMABQAAAAAAAAAAAAAAAAtKAAAAAoACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEqEJJQ0EgRFdPUlpFQyBBVVRPQlVTT1dZID4gUlpFU1rgVyBEV09SWkVDIEFVVE9CVVNPV1kAUlpFU1rgVwBEqEJJQ0EgRFdPUlpFQyBBVVRPQlVTT1dZAEedT1dBQ0tJRUdPAESoQklDQSBEV09SWkVDIABaVVJUAFJaRVNaT1dTS0EARKhCSUNBIFJaRVNaT1dTS0EgVEVDSE5JS1VNAESoQklDQSBSWkVTWk9XUwBEqEJJQ0EgUlpFU1pPV1NLQSBSQUoARKhCSUNBIFJaRVNaT1dTS0EgTUtTAESoQklDQSBSWkVTWk9XU0tBIE5BRExFl05JQ1RXTwBOQUdBV0NaWU5BIDEATkFHQVdDWllOQQBOQUdBV0NaWU5BIDIAWkFXQURBIEU0AFpBV0FEQQBMVUJaSU5BIE9TSUVETEUATFVCWklOQQBMVUJaSU5BIEU0AEJSWkVa4FdLQQBST1BDWllDRSBQT0RTnU/jQ0UAUE9EIFOdT+NDRQBST1BDWllDRSBQT0RTnU8AUk9QQ1pZQ0UgRFdPUlpFQyBBVVRPQlVTT1dZAFpJRUxPTkEAUk9QQ1pZQ0UgRFdPUlpFAFJPUENaWUNFIE1JQ0tJRVdJQ1pBAE1JQ0tJRVdJQ1pBAFJPUENaWUNFIE1JQ0tJRQBST1BDWllDRSBXSVRLT1dJQ0UAUk9QQ1pZQ0UgV0lUS09XAFJPUENaWUNFIFdFU0+dQQBTqERaSVNa4FcgTUGdT1BPTFNLSSBPU0lFRExFIE2dT0RZQ0gAV0VTT51BAFOoRFpJU1rgVyBNQZ1PUABTqERaSVNa4FcgTUGdT1BPTFNLSSBSWU5FSwBTqERaSVNa4FcgTZ1QLiBSWU5FSwBTqERaSVNa4FcgTUGdT1BPTFNLSSBQSZ1TVURTS0lFR08AUEmdU1VEU0tJRUdPAFOoRFpJU1rgVyBNQZ1PUE9MU0tJIEdSVU5XQUxEWktBAEdSVU5XQUxEWktBAE9MQ0hPV0EgRTQAT0xDSE9XQQBLTKhDWkFOWSBTVEFESU9OAEtMqENaQU5ZIFNUQURJTwBEpEJST1dBAESkQlJPV0EgMgBUUlpDSUFOQQBUUlpDSUFOQSBXT0xJQ1pLQSA1NiBOLr0uAFRSWkNJQU5BIFdPTElDWgCXV0lMQ1pBIDU4AJdXSUxDWkEAl1dJTENaQSBPU0lFRExFIDYwIE4uvS4Al1dJTENaQSBPU0lFRExFAJdXSUxDWkEgTk9XWSBEV+BSIDYyIE4uvS4Al1dJTENaQSBOT1dZIERXAFJaRVNa4FcgS1JBS09XU0tBIEdBTEVSSUEAUlpFU1rgVyBLUkFLT1dTS0EAUlpFU1rgVyBLUkFLT1dTAFJaRVNa4FcgS1JBS09XU0tBIFNaUElUQUwAUlpFU1rgVyBEV09SWkVDIExPS0FMTlkAUlpFU1rgVyBUT1dBUk5JQ0tJRUdPAFJaRVNa4FcgRFdPUlpFQwBSWkVTWuBXIERXT1JaRUMgQVVUT0JVU09XWQBSWkVTWuBXIEdST1RUR0VSQQBSWkVTWuBXIERXT1JaRUMgQVVUT0JVU09XWSA+IESoQklDQSBEV09SWkVDIEFVVE9CVVNPV1kARKhCSUNBAJdXSUxDWkEgTk9XWSBEV+BSIDcxIE4uvS4Al1dJTENaQSBPU0lFRExFIDczIE4uvS4Al1dJTENaQSA3NQBUUlpDSUFOQSBXT0xJQ1pLQSA3NyBOLr0uAEtMqENaQU5ZIFNaS0+dQQBEqEJJQ0EgUlpFU1pPV1NLQSBQTEFDIEdSWUZJVOBXAESoQklDQSBEV09SWkVDIEFVVE9CVVNPV1kgPiBST1BDWllDRSBEV09SWkVDIEFVVE9CVVNPV1kAUk9QQ1pZQ0UAUk9QQ1pZQ0UgRFdPUlpFQyBBVVRPQlVTT1dZID4gUlpFU1rgVyBEV09SWkVDIEFVVE9CVVNPV1kARKhCSUNBIERXT1JaRUMgQVVUT0JVU09XWSA+IFJaRVNa4FcgRFdPUlpFQyBMT0tBTE5ZAFJaRVNa4FcgRFdPUlpFQyBMT0tBTE5ZID4gRKhCSUNBIERXT1JaRUMgQVVUT0JVU09XWQBSWkVTWuBXIERXT1JaRUMgTE9LQUxOWSA+IFJPUENaWUNFIERXT1JaRUMgQVVUT0JVU09XWQAAAAEDAAABBAAAATsAAAFDAAABXQAAAWkAAAF5AAABfgAAAYkAAAGlAAABtQAAAcsAAAHhAAACAAAAAg0AAAIYAAACJQAAAi8AAAI2AAACRgAAAk4AAAJZAAACYwAAAnYAAAKBAAACkQAAAq0AAAK1AAACxQAAAtoAAALmAAAC9gAAAwkAAAMZAAADKQAAA04AAANVAAADZQAAA4AAAAOVAAADtwAAA8QAAAPlAAAD8QAAA/wAAAQEAAAEFQAABCUAAAQtAAAENwAABEAAAARaAAAEagAABHUAAAR9AAAElQAABKUAAAS/AAAEzwAABOkAAAT7AAAFCwAABSUAAAU9AAAFUwAABWMAAAV+AAAFkAAABccAAAXOAAAF6AAABgAAAAYLAAAGJQAABjUAAAZVAAAGjQAABpYAAAbPAAAHAwAABzcAAQAAB3kAAQABAAEAAAdtAAAHfQAAB4FBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAACAAAHhQACAAIAAgAAB20AAAeJAAAHhUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAeNAAMAAwADAAAHbQAAB4kAAAeRQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAABAAAB5UABAAEAAQAAAdtAAAHiQAAB5FBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAFAAAHmQAFAAUABQAAB20AAAeJAAAHkUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAedAAYABgAGAAAHbQAAB4kAAAeRQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAABwAAB6EABwAHAAcAAAdtAAAHpQAAB6FBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAIAAAHqQAIAAgACAAAB20AAAelAAAHqUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAkAAAetAAkACQAJAAAHbQAAB7EAAAetQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAACgAAB7UACgAKAAoAAAdtAAAHuQAAB7VBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAALAAAHvQALAAsACwAAB20AAAe5AAAHvUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAfBAAwADAAMAAAHbQAAB7kAAAfBQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAADQAAB8UADQANAA0AAAdtAAAHyQAAB81BAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAOAAAH0QAOAA4ADgAAB20AAAfVAAAH2UEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAA8AAAfdAA8ADwAPAAAHbQAAB+EAAAflQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAEAAAB+kAEAAQABAAAAdtAAAH6QAAB+1BAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAARAAAH8QARABEAEQAAB20AAAfxAAAH8UEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAABIAAAf1ABIAEgASAAAHbQAAB/kAAAf9QQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAEwAACAEAEwATABMAAAdtAAAIBQAAB/1BAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAUAAAICQAUABQAFAAAB20AAAgNAAAH/UEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAABUAAAgRABUAFQAVAAAHbQAACBUAAAf9QQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAFgAACBkAFgAWABYAAAdtAAAIHQAACBlBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAXAAAIIQAXABcAFwAAB20AAAghAAAIJUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAABgAAAgpABgAGAAYAAAHbQAACCkAAAgpQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAGQAACC0AGQAZABkAAAdtAAAIKQAACC1BAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAaAAAIMQAaABoAGgAAB20AAAgxAAAIMUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAABsAAAg1ABsAGwAbAAAHbQAACDEAAAg5QQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAHAAACD0AHAAcABwAAAdtAAAIQQAACD1BAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAdAAAIRQAdAB0AHQAAB20AAAhBAAAISUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAB4AAAhNAB4AHgAeAAAHbQAACEEAAAhRQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAHwAACFUAHwAfAB8AAAdtAAAIWQAACF1BAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAgAAAIYQAgACAAIAAAB20AAAhZAAAIXUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAACEAAAhlACEAIQAhAAAHbQAACGkAAAhtQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAIgAACHEAIgAiACIAAAdtAAAIdQAACG1BAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAoAAAIcQAoACgAKAAAB20AAAh1AAAIbUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAACkAAAhlACkAKQApAAAHbQAACGkAAAhtQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAKgAACGEAKgAqACoAAAdtAAAIWQAACF1BAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAArAAAIVQArACsAKwAAB20AAAhZAAAIXUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAACMAAAiBACMAIwAjAAAHbQAACEEAAAhRQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAJAAACIUAJAAkACQAAAdtAAAIQQAACElBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAlAAAIiQAlACUAJQAAB20AAAhBAAAIiUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAACYAAAiNACYAJgAmAAAHbQAACDEAAAg5QQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAALAAACDEALAAsACwAAAdtAAAIMQAACDFBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAtAAAILQAtAC0ALQAAB20AAAgpAAAILUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAC4AAAgpAC4ALgAuAAAHbQAACCkAAAgpQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAALwAACJEALwAvAC8AAAdtAAAIIQAACJFBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAwAAAIGQAwADAAMAAAB20AAAgdAAAIGUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAADEAAAgRADEAMQAxAAAHbQAACBUAAAf9QQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAMgAACAkAMgAyADIAAAdtAAAIDQAAB/1BAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAzAAAIAQAzADMAMwAAB20AAAgFAAAH/UEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAADQAAAf1ADQANAA0AAAHbQAAB/kAAAf9QQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAANQAAB/EANQA1ADUAAAdtAAAH8QAAB/FBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAA2AAAH6QA2ADYANgAAB20AAAfpAAAH7UEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAADcAAAfdADcANwA3AAAHbQAAB+EAAAflQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAOAAAB9EAOAA4ADgAAAdtAAAH1QAAB9lBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAA5AAAHxQA5ADkAOQAAB20AAAfJAAAHzUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAADoAAAfBADoAOgA6AAAHbQAAB7kAAAfBQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAOwAAB70AOwA7ADsAAAdtAAAHuQAAB71BAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAA8AAAHtQA8ADwAPAAAB20AAAe5AAAHtUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAD0AAAetAD0APQA9AAAHbQAAB7EAAAetQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAPgAAB6kAPgA+AD4AAAdtAAAHpQAAB6lBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAA/AAAHoQA/AD8APwAAB20AAAelAAAHoUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAedAEAAQABAAAAHbQAAB4kAAAeRQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAQQAAB5kAQQBBAEEAAAdtAAAHiQAAB5FBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAABCAAAHlQBCAEIAQgAAB20AAAeJAAAHkUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAEMAAAeNAEMAQwBDAAAHbQAAB4kAAAeRQQAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAJwAACJUAJwAnACcAAAdtAAAHfQAAB5FBAAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAAAAAAAABEAAAHeQBEAEQARAAAB20AAAd9AAAHgUEAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAixAAAI5gAAAAAAAAixAAAAFsUAAAAAAAAAAAAAAgAACOYAAAkbAAAAAAAACLEAAAAWxQAAAAAAAAAAAAADAAAJGwAACVAAAAAAAAAIsQAAABbFAAAAAAAAAAAAAAQAAAlQAAAJhQAAAAAAAAixAAAAFsUAAAAAAAAAAAAABQAACYUAAAm6AAAAAAAACLEAAAAWxQAAAAAAAAAAAAAGAAAJugAACe8AAAAAAAAIsQAAABbFAAAAAAAAAAAAAAcAAAnvAAAKJAAAAAAAAAixAAAAFsUAAAAAAAAAAAAACAAACiQAAApZAAAAAAAACLEAAAAWxQAAAAAAAAAAAAAJAAAKWQAACo4AAAAAAAAIsQAAABbFAAAAAAAAAAAAAAoAAAqOAAAKwwAAAAAAAAixAAAAFsUAAAAAAAAAAAAACwAACsMAAAr4AAAAAAAACLEAAAAWxQAAAAAAAAAAAAAMAAAK+AAACy0AAAAAAAAIsQAAABbFAAAAAAAAAAAAAA0AAAstAAALYgAAAAAAAAixAAAAFsUAAAAAAAAAAAAADgAAC2IAAAuXAAAAAAAACLEAAAAWxQAAAAAAAAAAAAAPAAALlwAAC8wAAAAAAAAIsQAAABbFAAAAAAAAAAAAABAAAAvMAAAMAQAAAAAAAAixAAAAFsUAAAAAAAAAAAAAEQAADAEAAAw2AAAAAAAACLEAAAAWxQAAAAAAAAAAAAASAAAMNgAADGsAAAAAAAAIsQAAABbFAAAAAAAAAAAAABMAAAxrAAAMoAAAAAAAAAixAAAAFsUAAAAAAAAAAAAAFAAADKAAAAzVAAAAAAAACLEAAAAWxQAAAAAAAAAAAAAVAAAM1QAADQoAAAAAAAAIsQAAABbFAAAAAAAAAAAAABYAAA0KAAANPwAAAAAAAAixAAAAFsUAAAAAAAAAAAAAFwAADT8AAA10AAAAAAAACLEAAAAWxQAAAAAAAAAAAAAYAAANdAAADakAAAAAAAAIsQAAABbFAAAAAAAAAAAAABkAAA2pAAAN3gAAAAAAAAixAAAAFsUAAAAAAAAAAAAAGgAADd4AAA4TAAAAAAAACLEAAAAWxQAAAAAAAAAAAAAbAAAOEwAADkgAAAAAAAAIsQAAABbFAAAAAAAAAAAAABwAAA5IAAAOfQAAAAAAAAixAAAAFsUAAAAAAAAAAAAAHQAADn0AAA6yAAAAAAAACLEAAAAWxQAAAAAAAAAAAAAeAAAOsgAADucAAAAAAAAIsQAAABbFAAAAAAAAAAAAAB8AAA7nAAAPHAAAAAAAAAixAAAAFsUAAAAAAAAAAAAAIAAADxwAAA9RAAAAAAAACLEAAAAWxQAAAAAAAAAAAAAhAAAPUQAAD4YAAAAAAAAIsQAAABbFAAAAAAAAAAAAACIAAA+7AAAP8AAAAAAAAAixAAAAFsUAAAAAAAAAAAAAIwAAD/AAABAlAAAAAAAACLEAAAAWxQAAAAAAAAAAAAAkAAAQJQAAEFoAAAAAAAAIsQAAABbFAAAAAAAAAAAAACUAABBaAAAQjwAAAAAAAAixAAAAFsUAAAAAAAAAAAAAJgAAEI8AABDEAAAAAAAACLEAAAAWxQAAAAAAAAAAAAAnAAAQxAAAEPkAAAAAAAAIsQAAABbFAAAAAAAAAAAAACgAABD5AAARLgAAAAAAAAixAAAAFsUAAAAAAAAAAAAAKQAAES4AABFjAAAAAAAACLEAAAAWxQAAAAAAAAAAAAAqAAARYwAAEZgAAAAAAAAIsQAAABbFAAAAAAAAAAAAACsAABGYAAARzQAAAAAAAAixAAAAFsUAAAAAAAAAAAAALAAAEc0AABICAAAAAAAACLEAAAAWxQAAAAAAAAAAAAAtAAASAgAAEjcAAAAAAAAIsQAAABbFAAAAAAAAAAAAAC4AABI3AAASbAAAAAAAAAixAAAAFsUAAAAAAAAAAAAALwAAEmwAABKhAAAAAAAACLEAAAAWxQAAAAAAAAAAAAAwAAASoQAAEtYAAAAAAAAIsQAAABbFAAAAAAAAAAAAADEAABLWAAATCwAAAAAAAAixAAAAFsUAAAAAAAAAAAAAMgAAEwsAABNAAAAAAAAACLEAAAAWxQAAAAAAAAAAAAAzAAATQAAAE3UAAAAAAAAIsQAAABbFAAAAAAAAAAAAADQAABN1AAATqgAAAAAAAAixAAAAFsUAAAAAAAAAAAAANQAAE6oAABPfAAAAAAAACLEAAAAWxQAAAAAAAAAAAAA2AAAT3wAAFBQAAAAAAAAIsQAAABbFAAAAAAAAAAAAADcAABQUAAAUSQAAAAAAAAixAAAAFsUAAAAAAAAAAAAAOAAAFEkAABR+AAAAAAAACLEAAAAWxQAAAAAAAAAAAAA5AAAUfgAAFLMAAAAAAAAIsQAAABbFAAAAAAAAAAAAADoAABSzAAAU6AAAAAAAAAixAAAAFsUAAAAAAAAAAAAAOwAAFOgAABUdAAAAAAAACLEAAAAWxQAAAAAAAAAAAAA8AAAVHQAAFVIAAAAAAAAIsQAAABbFAAAAAAAAAAAAAD0AABVSAAAVhwAAAAAAAAixAAAAFsUAAAAAAAAAAAAAPgAAFYcAABW8AAAAAAAACLEAAAAWxQAAAAAAAAAAAAA/AAAVvAAAFfEAAAAAAAAIsQAAABbFAAAAAAAAAAAAAEAAABXxAAAWJgAAAAAAAAixAAAAFsUAAAAAAAAAAAAAQQAAFiYAABZbAAAAAAAACLEAAAAWxQAAAAAAAAAAAABCAAAWWwAAFpAAAAAAAAAIsQAAABbFAAAAAAAAAAAAAAAWxQAAAAAfBQAAAAAAAAAW5QAAAAAfBQAAAAAAAAAXBQAAAAAfBQAAAAAAAAAXJQAAAAAfBQAAAAAAAAAXRQAAAAAfBQAAAAAAAAAXZQAAAAAfBQAAAAAAAAAXhQAAAAAfBQAAAAAAAAAXpQAAAAAfBQAAAAAAAAAXxQAAAAAfBQAAAAAAAAAX5QAAAAAfBQAAAAAAAAAYBQAAAAAfBQAAAAAAAAAYJQAAAAAfBQAAAAAAAAAYRQAAAAAfBQAAAAAAAAAYZQAAAAAfBQAAAAAAAAAYhQAAAAAfBQAAAAAAAAAYpQAAAAAfBQAAAAAAAAAYxQAAAAAfBQAAAAAAAAAY5QAAAAAfBQAAAAAAAAAZBQAAAAAfBQAAAAAAAAAZJQAAAAAfBQAAAAAAAAAZRQAAAAAfBQAAAAAAAAAZZQAAAAAfBQAAAAAAAAAZhQAAAAAfBQAAAAAAAAAZpQAAAAAfBQAAAAAAAAAZxQAAAAAfBQAAAAAAAAAZ5QAAAAAfBQAAAAAAAAAaBQAAAAAfBQAAAAAAAAAaJQAAAAAfBQAAAAAAAAAaRQAAAAAfBQAAAAAAAAAaZQAAAAAfBQAAAAAAAAAahQAAAAAfBQAAAAAAAAAapQAAAAAfBQAAAAAAAAAaxQAAAAAfBQAAAAAAAAAa5QAAAAAfBQAAAAAAAAAbBQAAAAAfBQAAAAAAAAAbJQAAAAAfBQAAAAAAAAAbRQAAAAAfBQAAAAAAAAAbZQAAAAAfBQAAAAAAAAAbhQAAAAAfBQAAAAAAAAAbpQAAAAAfBQAAAAAAAAAbxQAAAAAfBQAAAAAAAAAb5QAAAAAfBQAAAAAAAAAcBQAAAAAfBQAAAAAAAAAcJQAAAAAfBQAAAAAAAAAcRQAAAAAfBQAAAAAAAAAcZQAAAAAfBQAAAAAAAAAchQAAAAAfBQAAAAAAAAAcpQAAAAAfBQAAAAAAAAAcxQAAAAAfBQAAAAAAAAAc5QAAAAAfBQAAAAAAAAAdBQAAAAAfBQAAAAAAAAAdJQAAAAAfBQAAAAAAAAAdRQAAAAAfBQAAAAAAAAAdZQAAAAAfBQAAAAAAAAAdhQAAAAAfBQAAAAAAAAAdpQAAAAAfBQAAAAAAAAAdxQAAAAAfBQAAAAAAAAAd5QAAAAAfBQAAAAAAAAAeBQAAAAAfBQAAAAAAAAAeJQAAAAAfBQAAAAAAAAAeRQAAAAAfBQAAAAAAAAAeZQAAAAAfBQAAAAAAAAAehQAAAAAfBQAAAAAAAAAepQAAAAAfBQAAAAAAAAAexQAAAAAfBQAAAAAAAAAe5QAAAAAfBQAAAAAAAAAWxQAAAAAfBQAAAAAAAAAW5QAAAAAfBQAAAAAAAAAXBQAAAAAfBQAAAAAAAAAXJQAAAAAfBQAAAAAAAAAXRQAAAAAfBQAAAAAAAAAXZQAAAAAfBQAAAAAAAAAXhQAAAAAfBQAAAAAAAAAXpQAAAAAfBQAAAAAAAAAXxQAAAAAfBQAAAAAAAAAX5QAAAAAfBQAAAAAAAAAYBQAAAAAfBQAAAAAAAAAYJQAAAAAfBQAAAAAAAAAYRQAAAAAfBQAAAAAAAAAYZQAAAAAfBQAAAAAAAAAYhQAAAAAfBQAAAAAAAAAYpQAAAAAfBQAAAAAAAAAYxQAAAAAfBQAAAAAAAAAY5QAAAAAfBQAAAAAAAAAZBQAAAAAfBQAAAAAAAAAZJQAAAAAfBQAAAAAAAAAZRQAAAAAfBQAAAAAAAAAZZQAAAAAfBQAAAAAAAAAZhQAAAAAfBQAAAAAAAAAZpQAAAAAfBQAAAAAAAAAZxQAAAAAfBQAAAAAAAAAZ5QAAAAAfBQAAAAAAAAAaBQAAAAAfBQAAAAAAAAAaJQAAAAAfBQAAAAAAAAAaRQAAAAAfBQAAAAAAAAAaZQAAAAAfBQAAAAAAAAAahQAAAAAfBQAAAAAAAAAapQAAAAAfBQAAAAAAAAAaxQAAAAAfBQAAAAAAAAAWxQAAAAAfBQAAAAAAAAAW5QAAAAAfBQAAAAAAAAAXBQAAAAAfBQAAAAAAAAAXJQAAAAAfBQAAAAAAAAAXRQAAAAAfBQAAAAAAAAAXZQAAAAAfBQAAAAAAAAAXhQAAAAAfBQAAAAAAAAAXpQAAAAAfBQAAAAAAAAAXxQAAAAAfBQAAAAAAAAAX5QAAAAAfBQAAAAAAAAAYBQAAAAAfBQAAAAAAAAAYJQAAAAAfBQAAAAAAAAAYRQAAAAAfBQAAAAAAAAAYZQAAAAAfBQAAAAAAAAAYhQAAAAAfBQAAAAAAAAAYpQAAAAAfBQAAAAAAAAAYxQAAAAAfBQAAAAAAAAAY5QAAAAAfBQAAAAAAAAAZBQAAAAAfBQAAAAAAAAAZJQAAAAAfBQAAAAAAAAAZRQAAAAAfBQAAAAAAAAAZZQAAAAAfBQAAAAAAAAAZhQAAAAAfBQAAAAAAAAAZpQAAAAAfBQAAAAAAAAAZxQAAAAAfBQAAAAAAAAAZ5QAAAAAfBQAAAAAAAAAaBQAAAAAfBQAAAAAAAAAaJQAAAAAfBQAAAAAAAAAaRQAAAAAfBQAAAAAAAAAaZQAAAAAfBQAAAAAAAAAahQAAAAAfBQAAAAAAAAAapQAAAAAfBQAAAAAAAAAbBQAAAAAfBQAAAAAAAAAbJQAAAAAfBQAAAAAAAAAbRQAAAAAfBQAAAAAAAAAbZQAAAAAfBQAAAAAAAAAbhQAAAAAfBQAAAAAAAAAbpQAAAAAfBQAAAAAAAAAbxQAAAAAfBQAAAAAAAAAb5QAAAAAfBQAAAAAAAAAcBQAAAAAfBQAAAAAAAAAcJQAAAAAfBQAAAAAAAAAcRQAAAAAfBQAAAAAAAAAcZQAAAAAfBQAAAAAAAAAchQAAAAAfBQAAAAAAAAAcpQAAAAAfBQAAAAAAAAAcxQAAAAAfBQAAAAAAAAAc5QAAAAAfBQAAAAAAAAAdBQAAAAAfBQAAAAAAAAAdJQAAAAAfBQAAAAAAAAAdRQAAAAAfBQAAAAAAAAAdZQAAAAAfBQAAAAAAAAAdhQAAAAAfBQAAAAAAAAAdpQAAAAAfBQAAAAAAAAAdxQAAAAAfBQAAAAAAAAAd5QAAAAAfBQAAAAAAAAAeBQAAAAAfBQAAAAAAAAAeJQAAAAAfBQAAAAAAAAAeRQAAAAAfBQAAAAAAAAAeZQAAAAAfBQAAAAAAAAAehQAAAAAfBQAAAAAAAAAepQAAAAAfBQAAAAAAAAAexQAAAAAfBQAAAAAAAAAe5QAAAAAfBQAAAAAAAAAbBQAAAAAfBQAAAAAAAAAbJQAAAAAfBQAAAAAAAAAbRQAAAAAfBQAAAAAAAAAbZQAAAAAfBQAAAAAAAAAbhQAAAAAfBQAAAAAAAAAbpQAAAAAfBQAAAAAAAAAbxQAAAAAfBQAAAAAAAAAb5QAAAAAfBQAAAAAAAAAcBQAAAAAfBQAAAAAAAAAcJQAAAAAfBQAAAAAAAAAcRQAAAAAfBQAAAAAAAAAcZQAAAAAfBQAAAAAAAAAchQAAAAAfBQAAAAAAAAAcpQAAAAAfBQAAAAAAAAAcxQAAAAAfBQAAAAAAAAAc5QAAAAAfBQAAAAAAAAAdBQAAAAAfBQAAAAAAAAAdJQAAAAAfBQAAAAAAAAAdRQAAAAAfBQAAAAAAAAEAATEAAAAAAAAHcQAAB3UAAQAAB3EAAQAhAAAfBUEAAAAAAAAAAAAAAAAAAAEAAjEAAAAAAAAIeQAACH0AAgAACHkAAQAhAAAg9EEAAAAAAAAAAAAAAAAAAAEAAzEAAAAAAAAImQAACJ0AAwAACJkAAQANAAAi40EAAAAAAAAAAAAAAAAAAAEABDEAAAAAAAAIoQAAB3UABAAACKEAAQAUAAAjpkEAAAAAAAAAAAAAAAAAAAEABTEAAAAAAAAIpQAACGUABQAACKUAAQAgAAAk0kEAAAAAAAAAAAAAAAAAAAEABjEAAAAAAAAIqQAACH0ABgAACKkAAQAgAAAmskEAAAAAAAAAAAAAAAAAAAEABzEAAAAAAAAIrQAACJ0ABwAACK0AAQATAAAokkEAAAAAAAAAAAAAAAAAAAAprwABAAEAAAAAbW1uMTEAbW1uMTIAACncAAEAAgAAADQAbW1uMTUAbW1uMAAAKgkAAQADAAAAMjIAbW1uMjMAbW1uAAAqNgABAAQAAABuMzIAbW1uMDQAbW0AACpjAAEABQAAAG1uNDMAbW1uNDQAbQAAKpAAAQAGAAAAbW1uMDUAbW1uMDYAAAAqvQABAAcAAAAAbXBwMDMAbGFiMDEAACrqAAArAQAAKxgAACsvAAArRgAAK10AACt0AQABAQABAAAri0SoQklDQSBEV09SWgAAIEFVVE9CVVNPV1kBAAEBAAEAACuPUlpFU1rgVyBEV09SAABDIEFVVE9CVVNPVwEAAQEAAQAAK5NEqEJJQ0EgRFdPUloAACBBVVRPQlVTT1dZAQABAQABAAArl1JPUENaWUNFIERXTwAARUMgQVVUT0JVU08BAAEBAAEAACubRKhCSUNBIERXT1JaAAAgQVVUT0JVU09XWQEAAQEAAQAAK59SWkVTWuBXIERXT1IAAEMgTE9LQUxOWSA+AQABAQABAAAro1JaRVNa4FcgRFdPUgAAQyBMT0tBTE5ZID4xICAgICAgICAgICAAACunAAAAADEgICAgICAgICAgIAAAK8oAAAAAMSAgICAgICAgICAgAAAr7QAAAAAxICAgICAgICAgICAAACwQAAAAADEgICAgICAgICAgIAAALDMAAAAAMSAgICAgICAgICAgAAAsVgAAAAAxICAgICAgICAgICAAACx5AAAAAABMSUxJAExBVFY=';
+
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),1600)}
+function updateClocks(){const now=new Date(),tm=now.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit',second:'2-digit'});$$('[data-clock],.clock').forEach(x=>x.textContent=tm);if($('#idleTime'))$('#idleTime').textContent=tm;if($('#idleWeekday'))$('#idleWeekday').textContent=now.toLocaleDateString('pl-PL',{weekday:'long'}).replace(/^./,c=>c.toUpperCase());if($('#idleDate'))$('#idleDate').textContent=now.toISOString().slice(0,10)} updateClocks();setInterval(updateClocks,1000);
+function setMenuPage(n){state.menuPage=n;$('#rgPage1').classList.toggle('active',n===1);$('#rgPage2').classList.toggle('active',n===2);$('#rgPageLabel').textContent=`Strona: ${n}/2`}
+function go(id,opts={}){if(id==='course'&&!(state.course&&state.variant))id='idle';const el=document.getElementById(id);if(!el)return;if(id==='sound'&&state.view!=='sound')state.returnView=state.view;if(!opts.keepReturn&&id!=='sound')state.returnView=id;state.view=id;$$('.view').forEach(v=>v.classList.toggle('active',v.id===id));$$('.rail button').forEach(b=>b.classList.remove('active'));const nav=$(`[data-go="${id}"]`);if(nav&&nav.closest('.rail'))nav.classList.add('active');if(id==='menu')setMenuPage(1);if(id==='cameras')startCameras();if(id==='idle')renderIdle();if(id==='dutySelect')renderDutySelect();if(id==='tripSelect')renderTripChoice();}
+window.go=go;
+$$('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+$$('[data-menu-page]').forEach(b=>b.addEventListener('click',()=>setMenuPage(Number(b.dataset.menuPage))));
+$$('[data-action="bell"]').forEach(b=>b.addEventListener('click',()=>toast('Dzwonek wysłany')));
+$('#validatorBtn')?.addEventListener('click',()=>{});
+
+// Generic menu functions
+const generic={fault:['⚠','AWARIA','Ekran zgłoszeń awarii. W tej wersji działa nawigacja i stan lokalny; komunikacja z dyspozytornią będzie podpinana osobno.'],validators:['▣','KASOWNIKI','Stan kasownika można przełączać ikoną po lewej.'],extraLines:['⤨','LINIE DODATKOWE','Miejsce na ręczny wybór dodatkowej linii/kierunku.'],sms:['✉','WYŚLIJ SMS','Funkcja komunikacyjna — wymaga późniejszego podpięcia modemu/SIM.'],measurements:['⌁','POMIARY','Diagnostyka lokalna urządzenia i magistrali.'],info:['ⓘ','INFORMACJE','SRG Mobile v1.4.17 CLASSIC + GPS FIX · profil REVVL Tab 2.'],tests:['ⓘ','TESTY URZĄDZEŃ','Test UI: OK · RJ parser: OK · RS485 MOCK: dostępny.'],clockSettings:['◷','ZEGAR','Czas jest pobierany z systemu tabletu.'],displaySettings:['☼','USTAWIENIA EKRANU','Docelowo: jasność, tryb nocny i wygaszanie.'],videoDownload:['▧','PLIKI WIDEO — POBIERANIE','Miejsce na pobieranie nagrań z rejestratora.'],videoPreview:['▧','PLIKI WIDEO — PODGLĄD','Miejsce na podgląd zapisanych nagrań.'],autoDiag:['ⓘ','AUTO DIAGNOSTYKA','Testuje podstawowe moduły aplikacji bez wysyłania nieznanych ramek do sprzętu.'],vehicle:['75','POJAZD','Numer pojazdu: 75. Zmiana zostanie dodana jako pole edycyjne.'],gps:['GPS','GPS / POZYCJA','Przygotowany ekran pod GPS tabletu i logikę przystanków.']};
+$$('[data-open]').forEach(b=>b.addEventListener('click',()=>{const d=generic[b.dataset.open]||['ⓘ','FUNKCJA','—'];$('#genericIcon').textContent=d[0];$('#genericTitle').textContent=d[1];$('#genericText').textContent=d[2];go('generic')}));
+
+// Driver flow: idle -> duty -> nearest future trip -> course
+function renderIdle(){
+ const now=new Date();$('#idleVehicle').textContent=$('#vehicleNo')?.textContent||'75';renderCalendar();
+}
+function renderCalendar(){
+ const y=state.calendarYear,m=state.calendarMonth,now=new Date(),first=new Date(y,m,1),last=new Date(y,m+1,0),grid=$('#calendarGrid');if(!grid)return;grid.innerHTML='';
+ $('#calTitle').textContent=new Date(y,m,1).toLocaleDateString('pl-PL',{month:'long',year:'numeric'}).toUpperCase();
+ let start=(first.getDay()+6)%7;for(let i=0;i<start;i++){const d=document.createElement('div');d.className='calendarCell dim';grid.appendChild(d)}
+ for(let day=1;day<=last.getDate();day++){const dt=new Date(y,m,day),c=document.createElement('div');c.className='calendarCell';if(dt.getDay()===0)c.classList.add('sun');if(day===now.getDate()&&m===now.getMonth()&&y===now.getFullYear())c.classList.add('today');c.textContent=day;grid.appendChild(c)}
+}
+$('#calPrev').onclick=()=>{state.calendarMonth--;if(state.calendarMonth<0){state.calendarMonth=11;state.calendarYear--}renderCalendar()};
+$('#calNext').onclick=()=>{state.calendarMonth++;if(state.calendarMonth>11){state.calendarMonth=0;state.calendarYear++}renderCalendar()};
+function dutyById(id){return MANUAL_DUTIES.find(d=>d.id===id)||MANUAL_DUTIES[0]}
+function renderDutySelect(){
+ if(!MANUAL_DUTIES.some(d=>d.id===state.selectedDuty))state.selectedDuty=MANUAL_DUTIES[0]?.id||'';
+ const el=$('#taskItems');if(!el)return;el.innerHTML='';MANUAL_DUTIES.forEach(d=>{const b=document.createElement('button');b.className='taskItem'+(state.selectedDuty===d.id?' active':'');b.textContent=d.label;b.onclick=()=>{state.selectedDuty=d.id;renderDutySelect()};el.appendChild(b)});$('#dutyLine').textContent='1';$('#dayType').value=state.dayType;
+}
+$('#dayType').onchange=e=>state.dayType=e.target.value;
+function stepDuty(delta){const i=Math.max(0,MANUAL_DUTIES.findIndex(d=>d.id===state.selectedDuty)),n=(i+delta+MANUAL_DUTIES.length)%MANUAL_DUTIES.length;state.selectedDuty=MANUAL_DUTIES[n].id;renderDutySelect()}
+$('#taskUp').onclick=()=>stepDuty(-1);$('#taskDown').onclick=()=>stepDuty(1);$('#taskTop').onclick=()=>{state.selectedDuty=MANUAL_DUTIES[0]?.id||'';renderDutySelect()};
+function dutyEntries(id){
+ // Kolejność na ekranie wynika z godzin odjazdów z PIERWSZEGO przystanku kursu.
+ return manualCourseEntries().filter(c=>c.task===id).sort((a,b)=>
+  (hhmmToMinutes(a.startTime)??Infinity)-(hhmmToMinutes(b.startTime)??Infinity)||a.tripNo-b.tripNo);
+}
+function nowMinutes(){const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60}
+// Zegar kursu: dodatni przed odjazdem, 00:00 o czasie, ujemny po planowanym odjeździe.
+// Dla kursów przez północ przyjmij najbliższą dobę, nie godzinę przesuniętą o 24 h.
+function departureDateForCourse(course, now=new Date()){
+ if(!course?.startTime)return null;
+ const mins=hhmmToMinutes(course.startTime);if(mins===null)return null;
+ const d=new Date(now.getFullYear(),now.getMonth(),now.getDate(),Math.floor(mins/60),mins%60,0,0);
+ const gap=d.getTime()-now.getTime();
+ if(gap>20*3600000)d.setDate(d.getDate()-1);
+ else if(gap< -20*3600000)d.setDate(d.getDate()+1);
+ return d;
+}
+// Format MM:SS, także dla 60, 120 i większej liczby minut — bez zamiany na godziny.
+// Znak + oznacza czas do odjazdu, znak - czas po planowanym odjeździe.
+function formatDepartureDifference(ms){
+ if(!Number.isFinite(ms))return '—';
+ // Bezwzględna liczba sekund zaokrąglona w górę do pełnej sekundy:
+ // +00:01 trwa do godziny odjazdu, a -00:01 pojawia się od razu po niej.
+ if(ms===0)return '00:00';
+ const secondsTotal=Math.ceil(Math.abs(ms)/1000);
+ const minutesTotal=Math.floor(secondsTotal/60); // BEZ %60 i BEZ formatu godzinowego
+ const seconds=secondsTotal%60;
+ return (ms>0?'+':'-')+String(minutesTotal).padStart(2,'0')+':'+String(seconds).padStart(2,'0');
+}
+function closeCourseStarted(){const el=$('#courseStartedOverlay');el.classList.remove('open');el.setAttribute('aria-hidden','true')}
+function showCourseStarted(){
+ const el=$('#courseStartedOverlay');if(!el||state.courseStartedNotified)return;
+ state.courseStartedNotified=true;
+ el.classList.add('open');el.setAttribute('aria-hidden','false');el.focus();
+}
+function updateDepartureUI(now=new Date()){
+ if(!state.course||!state.variant)return;
+ const departure=state.courseDepartureAt;
+ if(!Number.isFinite(departure)){$('#courseDelay').textContent='—';$('#camDelay').textContent='—';return;}
+ const ms=departure-now.getTime();
+ const clock=formatDepartureDifference(ms);
+ $('#courseDelay').textContent=clock;$('#camDelay').textContent=clock;
+ // Komunikat tylko raz dla każdego kursu i dopiero po planowanym odjeździe.
+ // Jeżeli kierowca wybrał kurs przed czasem, pojawi się po dojściu do 00:00.
+ if(ms<=0&&state.view==='course'&&!state.courseStartedNotified){showCourseStarted()}
+}
+$('#courseStartedOverlay').addEventListener('click',closeCourseStarted);
+$('#courseStartedOverlay').addEventListener('keydown',e=>{
+ if(e.key==='Escape'||e.key==='Enter'||e.key===' '){e.preventDefault();closeCourseStarted()}
+});
+
+function nearestFutureIndex(entries,currentMinutes=nowMinutes()){
+ // Wybierz najbliższy odjazd NIE WCZEŚNIEJ niż aktualny czas (na początku trasy).
+ // Po ostatnim odjeździe nie podawaj kursu z przeszłości jako nadchodzącego.
+ let winner=-1,best=Infinity;
+ entries.forEach((c,i)=>{const departure=hhmmToMinutes(c.startTime);if(departure!=null&&departure>=currentMinutes&&departure<best){best=departure;winner=i}});
+ return winner;
+}
+function openTripChoice(dutyId,index=null,fromNext=false){
+ state.selectedDuty=dutyId;state.tripChoiceEntries=dutyEntries(dutyId);
+ const nearest=nearestFutureIndex(state.tripChoiceEntries);
+ state.tripChoiceNoFuture=nearest<0;
+ state.tripChoiceIndex=index==null?(nearest>=0?nearest:Math.max(0,state.tripChoiceEntries.length-1)):Math.max(0,Math.min(index,state.tripChoiceEntries.length-1));
+ state.tripChoiceFromNext=fromNext;go('tripSelect');
+}
+$('#dutyConfirm').onclick=()=>openTripChoice(state.selectedDuty,null,false);
+function renderTripChoice(){
+ const es=state.tripChoiceEntries||[],c=es[state.tripChoiceIndex];
+ if(!c){$('#tripDirection').textContent='BRAK KURSÓW';$('#tripStartStop').textContent='—';$('#tripCounter').textContent='—/—';$('#tripDepartureHint').textContent='Brak kursów w wybranej kursówce';$('#tripNoFuture').hidden=true;$('#tripOk').disabled=true;return}
+ const v=state.rj?.variants?.find(x=>x.index===c.variantIndex),ss=v?.stops||[];
+ $('#tripDirection').textContent=finalDirection(v).toUpperCase();
+ $('#tripStartStop').textContent=(ss[0]?.name||'—').toUpperCase();
+ $('#tripLine').textContent=v?.line||c.line||'1';$('#tripBrigade').textContent=c.brigade||'1';
+ $('#tripCounter').textContent=`${state.tripChoiceIndex+1}/${es.length} (${c.startTime})`;
+ const departed=hhmmToMinutes(c.startTime)<nowMinutes();
+ $('#tripDepartureHint').textContent=departed?'Odjazd z pierwszego przystanku już minął':'Odjazd z pierwszego przystanku: '+c.startTime;
+ $('#tripNoFuture').hidden=!state.tripChoiceNoFuture;
+ $('#tripOk').disabled=false;
+}
+$('#tripPrev').onclick=()=>{if(!state.tripChoiceEntries.length)return;state.tripChoiceIndex=(state.tripChoiceIndex-1+state.tripChoiceEntries.length)%state.tripChoiceEntries.length;renderTripChoice()};
+$('#tripNext').onclick=()=>{if(!state.tripChoiceEntries.length)return;state.tripChoiceIndex=(state.tripChoiceIndex+1)%state.tripChoiceEntries.length;renderTripChoice()};
+$('#tripCancel').onclick=()=>{if(state.tripChoiceFromNext){state.tripChoiceFromNext=false;go('course')}else go('dutySelect')};
+$('#dutyBack').onclick=()=>{state.tripChoiceFromNext=false;if(state.course&&state.variant){state.selectedDuty=state.course.task||state.selectedDuty;go('course');refreshCourse()}else go('idle')};
+$('#tripOk').onclick=()=>{const c=state.tripChoiceEntries[state.tripChoiceIndex];if(!c)return;state.tripChoiceFromNext=false;selectCourse(c)};
+function nextTripSameDuty(){
+ if(!state.course?.manualDuty)return null;
+ const es=dutyEntries(state.course.task),idx=es.findIndex(x=>x.tripNo===state.course.tripNo);
+ return idx>=0&&idx+1<es.length?es[idx+1]:null;
+}
+function closeTripFinish(){const d=$('#tripFinishOverlay');d.classList.remove('open');d.setAttribute('aria-hidden','true')}
+function finishCurrentTrip(){
+ if(!state.course||!state.variant)return;
+ const hasNext=Boolean(nextTripSameDuty());
+ $('#tripFinishQuestion').textContent=hasNext?'Czy zakończyć realizację kursu i przejść do kolejnego kursu?':'Czy zakończyć realizację kursu?';
+ const d=$('#tripFinishOverlay');d.classList.add('open');d.setAttribute('aria-hidden','false');
+ $('#tripFinishNo').focus();
+}
+$('#tripFinishNo').onclick=()=>{closeTripFinish();go('course')};
+$('#tripFinishYes').onclick=()=>{
+ if(!$('#tripFinishOverlay').classList.contains('open'))return;
+ closeTripFinish();
+ const next=nextTripSameDuty();
+ if(next){
+   state.tripChoiceFromNext=false;
+   // Uruchamiamy kolejny kurs tej samej kursówki bez dodatkowego ekranu wyboru.
+   selectCourse(next);
+   return;
+ }
+ const oldCourse=state.course;
+ if(oldCourse?.manualDuty){
+   state.course=null;state.variant=null;state.routeIndex=0;state.pendingStop=null;
+   state.courseDepartureAt=null;state.courseStartedNotified=false;closeCourseStarted();
+   renderNoActiveCourse();$('#endDutyTask').textContent=oldCourse.task||'';
+   $('#endDutyOverlay').classList.add('open');
+ }else{
+   // Dla kursów z RJ bez ustalonej kolejności kursówki nie zgadujemy następnego kursu.
+   state.course=null;state.variant=null;state.routeIndex=0;state.pendingStop=null;
+   state.courseDepartureAt=null;state.courseStartedNotified=false;closeCourseStarted();
+   renderNoActiveCourse();go('idle');openCoursePicker();
+ }
+};
+$('#endDutyOverlay').onclick=()=>{$('#endDutyOverlay').classList.remove('open');go('idle')};
+
+// DROGA (SRG-6000P): przejazd od aktualnego do następnego przystanku.
+// Plik RJ 261011 ma zerowe dane długości odcinków, dlatego odległości są
+// SZACOWANE z współrzędnych przystanków (rzut pozycji na odcinek prosty).
+// Nie traktować tego jako drogowego kilometrażu ani jako danych do automatycznego
+// przełączenia przystanków / naliczania opóźnienia.
+function roadMeters(lat1,lon1,lat2,lon2){
+ const R=6371000,r=Math.PI/180,dLat=(lat2-lat1)*r,dLon=(lon2-lon1)*r;
+ const a=Math.sin(dLat/2)**2+Math.cos(lat1*r)*Math.cos(lat2*r)*Math.sin(dLon/2)**2;
+ return 2*R*Math.atan2(Math.sqrt(a),Math.sqrt(Math.max(0,1-a)));
+}
+function roadProjection(a,b,fix){
+ // Metry w lokalnym układzie płaskim; wartość projekcji może wyjść poza odcinek.
+ const r=Math.PI/180,R=6371000,cos=Math.cos(((a.lat+b.lat)/2)*r);
+ const x=(b.lon-a.lon)*r*R*cos,y=(b.lat-a.lat)*r*R;
+ const px=(fix.lon-a.lon)*r*R*cos,py=(fix.lat-a.lat)*r*R;
+ const len2=x*x+y*y;if(len2<1)return null;
+ const fraction=(px*x+py*y)/len2;
+ const lateral=Math.abs(px*y-py*x)/Math.sqrt(len2);
+ return {fraction,lateral};
+}
+function renderRoad(now=Date.now()){
+ const el=$('#courseRoad');if(!el)return;
+ el.title='Droga: przebyte / odcinek (różnica). ~ = szacunek z GPS w linii prostej; w RJ brak kilometrażu drogowego.';
+ if(!state.variant){el.textContent='—';return;}
+ const ss=state.variant.stops||[],i=state.routeIndex;
+ if(i>=ss.length-1){el.textContent='KONIEC TRASY';return;}
+ const a=ss[i],b=ss[i+1];
+ if(![a?.lat,a?.lon,b?.lat,b?.lon].every(Number.isFinite)){el.textContent='BRAK GPS PRZYSTANKÓW';return;}
+ const length=Math.round(roadMeters(a.lat,a.lon,b.lat,b.lon));
+ if(length<2){el.textContent='BRAK DŁUGOŚCI ODCINKA';return;}
+ const fix=state.gpsLast;
+ if(!fix||now-fix.ts>30000){el.textContent=`GPS — / ~${length} (—)`;return;}
+ if(!Number.isFinite(fix.lat)||!Number.isFinite(fix.lon)||
+   (Number.isFinite(fix.acc)&&fix.acc>100)){
+   el.textContent=`GPS NIEDOKŁ. / ~${length}`;return;
+ }
+ const pos=roadProjection(a,b,fix);
+ if(!pos||pos.lateral>Math.max(300,length*0.35)){
+   el.textContent=`POZA ODCINKIEM / ~${length}`;return;
+ }
+ const fraction=Math.max(0,Math.min(1.25,pos.fraction));
+ const travelled=Math.round(length*fraction),delta=travelled-length;
+ el.textContent=`~${travelled} / ~${length} (${delta>0?'+':''}${delta})`;
+}
+// GPS/GNSS: on-device Android LocationManager (APK) + web fallback over secure origins.
+// Geolocation error 1 means permission denied; it is NOT a GPS hardware fault.
+function gpsStatus(message,help='',isError=false){
+ const el=$('#gpsState'), hint=$('#gpsHelp');
+ if(el){el.textContent=message;el.style.color=isError?'#ef6d63':'#f2cb56';}
+ if(hint)hint.textContent=help||'';
+ if(isError)renderRoad();
+}
+function gpsWebError(e){
+ const code=Number(e?.code)||0;
+ if(code===1){
+   gpsStatus('BRAK UPRAWNIEŃ GPS',
+     'Lokalizacja jest zablokowana (kod 1). W ustawieniach Androida nadaj przeglądarce lub aplikacji dostęp do dokładnej lokalizacji. Dla pliku HTML otwartego z pamięci telefonu użyj aplikacji APK lub strony HTTPS.',true);
+ }else if(code===2){
+   gpsStatus('BRAK SYGNAŁU GPS',
+     'Nie udało się ustalić położenia (kod 2). Włącz lokalizację urządzenia i sprawdź sygnał na otwartej przestrzeni.',true);
+ }else if(code===3){
+   gpsStatus('OCZEKIWANIE NA GPS',
+     'Sygnał GPS nie pojawił się w ciągu 30 sekund. Sprawdź lokalizację urządzenia i spróbuj na zewnątrz. Odbiornik może potrzebować więcej czasu.',true);
+ }else{
+   gpsStatus('PROBLEM Z GPS',e?.message||'Sprawdź ustawienia lokalizacji.',true);
+ }
+}
+function updateGpsFix(lat,lon,acc,speed,bearing,source='WEB'){
+ if(!Number.isFinite(Number(lat))||!Number.isFinite(Number(lon))||Math.abs(Number(lat))>90||Math.abs(Number(lon))>180){return;}
+ state.gpsLast={lat:Number(lat),lon:Number(lon),acc:Number(acc),speed,bearing,source,ts:Date.now()};
+ const el=$('#gpsState');el.textContent='POZYCJA OK';el.style.color='#61dc72';
+ $('#gpsLat').textContent=Number(lat).toFixed(6);
+ $('#gpsLon').textContent=Number(lon).toFixed(6);
+ $('#gpsAcc').textContent=Number.isFinite(acc)?Math.round(acc)+' m':'—';
+ $('#gpsSpeed').textContent=Number.isFinite(speed)?(speed*3.6).toFixed(1)+' km/h':'—';
+ $('#gpsBearing').textContent=Number.isFinite(bearing)?Math.round(bearing)+'°':'—';
+ $('#gpsSource').textContent=source;
+ $('#gpsHelp').textContent='Pozycja aktualna. Dystans w polu „Droga” jest szacowany z punktów GPS.';
+ renderRoad();
+}
+window.onNativeGpsFix=(lat,lon,acc,speed,bearing,sats)=>{
+ const speedValue=(typeof speed==='number' && Number.isFinite(speed))?speed:NaN;
+ const bearingValue=(typeof bearing==='number' && Number.isFinite(bearing))?bearing:NaN;
+ const satLabel=(typeof sats==='number' && sats>=0)?` · ${sats} SAT`:'';
+ updateGpsFix(lat,lon,acc,speedValue,bearingValue,`GPS ANDROID${satLabel}`);
+};
+window.onNativeGpsStatus=(code,detail)=>{
+ const msg=typeof detail==='string'?detail:'';
+ if(code==='READY')gpsStatus('GPS GOTOWY',msg);
+ else if(code==='WAITING')gpsStatus('SZUKANIE SATELITÓW…',msg||'Pierwsze ustalenie pozycji może potrwać kilkadziesiąt sekund.');
+ else if(code==='PERMISSION')gpsStatus('BRAK UPRAWNIEŃ GPS',msg||'Zezwól aplikacji na dokładną lokalizację w ustawieniach Androida.',true);
+ else if(code==='DISABLED')gpsStatus('GPS WYŁĄCZONY',msg||'Włącz lokalizację urządzenia w ustawieniach Androida.',true);
+ else if(code==='NO_PROVIDER')gpsStatus('BRAK ODBIORNIKA GPS',msg||'To urządzenie nie udostępnia GPS_PROVIDER.',true);
+ else if(code==='STOPPED')gpsStatus('WYŁĄCZONY',msg);
+ else if(code==='ERROR')gpsStatus('PROBLEM Z GPS',msg||'Sprawdź ustawienia lokalizacji.',true);
+};
+function startGps(){
+ if(window.SRGNativeGPS&&typeof window.SRGNativeGPS.start==='function'){
+   gpsStatus('START GNSS…','Oczekiwanie na pozwolenie Androida lub ustalenie pozycji GPS.');
+   try{window.SRGNativeGPS.start()}catch(e){gpsStatus('PROBLEM Z GPS',e.message,true)}
+   return;
+ }
+ if(location.protocol==='file:'||location.protocol==='content:'){
+   gpsStatus('GPS ZABLOKOWANY W PLIKU',
+     'Przeglądarka może blokować lokalizację dla content:// i file://. Skorzystaj z aplikacji APK lub otwórz HTML na stronie HTTPS. Samo przyznanie lokalizacji Chrome może nie wystarczyć.',true);
+   return;
+ }
+ if(!window.isSecureContext){
+   gpsStatus('WYMAGANE HTTPS',
+     'Przeglądarkowy GPS działa w bezpiecznym kontekście (HTTPS lub localhost). Wersja APK korzysta z natywnego GPS Androida.',true);
+   return;
+ }
+ if(!navigator.geolocation){
+   gpsStatus('GPS NIEDOSTĘPNY','Ta przeglądarka nie udostępnia geolokalizacji.',true);
+   return;
+ }
+ if(state.gpsWatch!=null){gpsStatus('GPS JUŻ URUCHOMIONY','Czekam na kolejne pozycje.');return;}
+ gpsStatus('SZUKANIE POZYCJI…','Zezwól przeglądarce na dokładną lokalizację.');
+ try{
+  state.gpsWatch=navigator.geolocation.watchPosition(
+   p=>updateGpsFix(p.coords.latitude,p.coords.longitude,p.coords.accuracy,
+     p.coords.speed,p.coords.heading,'WEB GEOLOCATION'),
+   gpsWebError,{enableHighAccuracy:true,maximumAge:1000,timeout:30000});
+ }catch(e){state.gpsWatch=null;gpsStatus('PROBLEM Z GPS',e.message,true)}
+}
+function stopGps(){
+ if(window.SRGNativeGPS&&typeof window.SRGNativeGPS.stop==='function'){
+   try{window.SRGNativeGPS.stop()}catch(e){}
+ }
+ if(state.gpsWatch!=null&&navigator.geolocation){navigator.geolocation.clearWatch(state.gpsWatch)}
+ state.gpsWatch=null;state.gpsLast=null;gpsStatus('WYŁĄCZONY','GPS zatrzymany.');renderRoad();
+}
+$('#gpsStart').onclick=startGps;$('#gpsStop').onclick=stopGps;
+
+// Course stop controls
+function stops(){return state.variant?.stops?.length?state.variant.stops:[]}
+function refreshCourse(){
+ const ss=stops();const i=Math.max(0,Math.min(state.routeIndex,Math.max(0,ss.length-1)));const shown=Number.isInteger(state.pendingStop)?state.pendingStop:i;
+ const cur=ss[shown]?.name||'ULICA SZKOLNA',n1i=Math.min(shown+1,Math.max(0,ss.length-1)),n2i=Math.min(shown+2,Math.max(0,ss.length-1)),n1=ss[n1i]?.name||'ULICA EL...',n2=ss[n2i]?.name||'ALEJA MŁODZIEŻY',end=ss.at(-1)?.name||($('#courseDest')?.textContent||'ZAJEZDNIA MKS');
+ const t0=plannedTimeAtStop(shown,ss.length)||'15:55',t1=plannedTimeAtStop(n1i,ss.length)||'15:56',t2=plannedTimeAtStop(n2i,ss.length)||'16:01';
+ $('#courseCurrent').textContent=`${t0} ${cur.toUpperCase()}`;$('#courseNext1').textContent=`${t1} ${n1.toUpperCase()}`;$('#courseNext2').textContent=`${t2} ${n2.toUpperCase()}`;
+ $('#courseStopCount').textContent=ss.length?`${shown+1}/${ss.length}`:'1/73';$('#camCurrent').textContent=cur.toUpperCase();$('#camEnd').textContent=end.toUpperCase();$('#camDelay').textContent=$('#courseDelay').textContent;
+ if(state.course?.manualDuty){$('#courseTask').textContent=state.course.task;}renderRoad();updateDepartureUI();
+ if(Number.isInteger(state.pendingStop))toast(`Wybrano przystanek ${shown+1}/${ss.length||73} · ✓ zatwierdź`)
+}
+function preview(delta){const ss=stops();const max=ss.length?ss.length-1:72;const base=Number.isInteger(state.pendingStop)?state.pendingStop:state.routeIndex;state.pendingStop=Math.max(0,Math.min(max,base+delta));refreshCourse()}
+$('#prevStop').onclick=()=>preview(-1);$('#nextStop').onclick=()=>{const ss=stops();if(ss.length&&state.routeIndex>=ss.length-1&&!Number.isInteger(state.pendingStop)){finishCurrentTrip();return}preview(1)};$('#cancelStop').onclick=()=>{state.pendingStop=null;refreshCourse();toast('Anulowano wybór przystanku')};$('#confirmStop').onclick=()=>{const ss=stops();if(Number.isInteger(state.pendingStop)){state.routeIndex=state.pendingStop;state.pendingStop=null;refreshCourse();toast('Przystanek zatwierdzony')}else if(ss.length&&state.routeIndex>=ss.length-1){finishCurrentTrip()}else toast('Zatwierdzono')};
+// „Wymelduj” = menu z prawdziwego SRG-6000P, trzy opcje i anulowanie.
+function setDialog(id,open){const d=$('#'+id);d.classList.toggle('open',open);d.setAttribute('aria-hidden',String(!open))}
+function resetCourseSession(){
+ state.course=null;state.variant=null;state.routeIndex=0;state.pendingStop=null;
+ state.courseDepartureAt=null;state.courseStartedNotified=false;closeCourseStarted();
+ state.tripChoiceEntries=[];state.tripChoiceIndex=0;state.tripChoiceFromNext=false;state.tripChoiceNoFuture=false;
+ closeTripFinish();closeCoursePicker();renderNoActiveCourse();
+}
+function askLogout(){setDialog('logoutOptionsOverlay',true);$('#logoutCancel').focus()}
+function closeLogout(){setDialog('logoutOptionsOverlay',false)}
+$('#logoutCourse').onclick=askLogout;
+$('#cameraLogout').onclick=askLogout;
+$('#logoutCancel').onclick=closeLogout;
+$('#logoutExitDuty').onclick=()=>{
+ closeLogout();resetCourseSession();go('idle');toast('Wyjście z kursówki — kierowca pozostaje zalogowany');
+};
+function openDriverChange(reason){
+ state.driverChangeReason=reason;
+ $('#driverChangeTitle').textContent=reason==='change'?'ZMIEŃ KIEROWCĘ':'ZALOGUJ KIEROWCĘ';
+ $('#driverNumberInput').value='';$('#driverChangeError').textContent='';
+ setDialog('driverChangeOverlay',true);$('#driverNumberInput').focus();
+}
+function closeDriverChange(){setDialog('driverChangeOverlay',false);state.driverChangeReason=null}
+$('#logoutChangeDriver').onclick=()=>{closeLogout();openDriverChange('change')};
+$('#logoutFull').onclick=()=>{
+ closeLogout();resetCourseSession();state.driverLoggedIn=false;state.driverNumber='';
+ state.selectedDuty='S-25';go('idle');toast('Wylogowano kierowcę i zakończono kursówkę');
+};
+$('#driverChangeCancel').onclick=closeDriverChange;
+function confirmDriverChange(){
+ const number=$('#driverNumberInput').value.trim();
+ if(!/^\d{1,12}$/.test(number)){
+  $('#driverChangeError').textContent='Podaj numer kierowcy (1–12 cyfr).';$('#driverNumberInput').focus();return;
+ }
+ state.driverNumber=number;state.driverLoggedIn=true;
+ resetCourseSession();closeDriverChange();go('dutySelect');toast('Kierowca '+number+' — wybierz kursówkę');
+}
+$('#driverChangeOk').onclick=confirmDriverChange;
+$('#driverNumberInput').addEventListener('keydown',e=>{if(e.key==='Enter')confirmDriverChange()});
+document.addEventListener('keydown',e=>{
+ if(e.key!=='Escape')return;
+ if($('#driverChangeOverlay').classList.contains('open')){closeDriverChange();e.preventDefault()}
+ else if($('#logoutOptionsOverlay').classList.contains('open')){closeLogout();e.preventDefault()}
+});
+
+// Sound
+function renderSound(){const v=Math.max(80,Math.min(100,state.volume));state.volume=v;$('#volumeFill').style.width=((v-80)/20*100)+'%';$('#volumePct').textContent=v+'%';$('#speakerTarget').textContent='Głośnik: '+state.speaker}
+$('#volumeMinus').onclick=()=>{state.volume-=1;renderSound()};$('#volumePlus').onclick=()=>{state.volume+=1;renderSound()};$('#speakerPrev').onclick=$('#speakerNext').onclick=()=>{state.speaker=state.speaker==='Wewn.'?'Zewn.':'Wewn.';renderSound()};$('#soundCancel').onclick=()=>go(state.returnView||'course',{keepReturn:true});$('#soundSave').onclick=()=>{localStorage.setItem('srgSound',JSON.stringify({volume:state.volume,speaker:state.speaker}));toast('Ustawienia dźwięku zapisane');go(state.returnView||'course',{keepReturn:true})};try{const x=JSON.parse(localStorage.getItem('srgSound')||'null');if(x){state.volume=x.volume||90;state.speaker=x.speaker||'Wewn.'}}catch(e){}renderSound();
+
+// Cameras
+async function startCameras(){if(state.streams.length)return;if(!navigator.mediaDevices?.getUserMedia){$('#frontStatus').textContent='Kamera przednia niedostępna';$('#rearStatus').textContent='Kamera tylna niedostępna';return}try{const s=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});state.streams.push(s);$('#frontVideo').srcObject=s;$('#frontStatus').style.display='none'}catch(e){$('#frontStatus').textContent='Kamera przednia niedostępna'}try{const s=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});state.streams.push(s);$('#rearVideo').srcObject=s;$('#rearStatus').style.display='none'}catch(e){$('#rearStatus').textContent='Kamera tylna niedostępna'} }
+
+// RJ
+function applyRJBuffer(buf,name,source='plik'){
+  const r=RJParser.parse(buf);if(source==='wbudowany'){for(const s of r.stops){const gps=BUILTIN_STOP_GPS[s.id];if(gps){s.lat=gps[0];s.lon=gps[1];s.gpsRadius=gps[2];s.gpsVerified=false;}}}state.rj=r;state.course=null;state.variant=null;state.routeIndex=0;state.pendingStop=null;
+  $('#rjStatusBox').textContent=`Wczytano: ${name} · ${r.bytes} B · ${source}`;
+  $('#rjInfo').innerHTML=`<div><small>Data RJ</small><b>${r.header.date||'?'}</b></div><div><small>Przystanki</small><b>${r.stops.length}</b></div><div><small>Warianty</small><b>${r.variants.length}</b></div><div><small>Kursy Krs</small><b>${r.courses?.length||0}</b></div>`;
+  renderVariants();renderCourses();renderNoActiveCourse();return r;
+}
+function builtinBytes(){const raw=atob(BUILTIN_RJ_B64),a=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)a[i]=raw.charCodeAt(i);return a.buffer}
+function loadBuiltinRJ(showToast=true){try{const r=applyRJBuffer(builtinBytes(),BUILTIN_RJ_NAME,'wbudowany');if(showToast)toast(`Wbudowany RJ: ${r.variants.length} wariantów`);return r}catch(err){$('#rjStatusBox').textContent='Błąd wbudowanego RJ: '+err.message;if(showToast)toast('Błąd wbudowanego RJ');return null}}
+$('#rjBuiltin').onclick=()=>loadBuiltinRJ(true);
+$('#rjChoose').onclick=()=>$('#rjFile').click();
+$('#rjFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const buf=await f.arrayBuffer();applyRJBuffer(buf,f.name,'plik użytkownika');toast('RJ wczytany')}catch(err){$('#rjStatusBox').textContent='Błąd RJ: '+err.message;toast('Nie udało się wczytać RJ')}};
+function finalDirection(v){
+  const last=v?.stops?.length?v.stops[v.stops.length-1]?.name:'';
+  if(last&&last.trim())return last.trim();
+  const raw=(v?.direction||v?.description||'').trim();
+  if(!raw)return 'bez kierunku';
+  const parts=raw.split(/\s*(?:→|->|–|—|\s-\s)\s*/).filter(Boolean);
+  return (parts.at(-1)||raw).trim();
+}
+function hhmmToMinutes(v){const m=String(v||'').match(/^(\d{1,2}):(\d{2})$/);return m?Number(m[1])*60+Number(m[2]):null}
+function minutesToHHMM(v){v=((Math.round(v)%1440)+1440)%1440;return String(Math.floor(v/60)).padStart(2,'0')+':'+String(v%60).padStart(2,'0')}
+function plannedTimeAtStop(index,total){const c=state.course;if(!c?.manualDuty||!c.startTime||!c.endTime)return null;const a=hhmmToMinutes(c.startTime),z=hhmmToMinutes(c.endTime);if(a==null||z==null)return null;let end=z;if(end<a)end+=1440;const n=Math.max(1,(total||1)-1),f=Math.max(0,Math.min(1,index/n));return minutesToHHMM(a+(end-a)*f)}
+function manualCourseEntries(){const out=[];for(const duty of MANUAL_DUTIES){for(const t of duty.trips){out.push({index:'manual-'+duty.id+'-'+t.tripNo,manualDuty:true,task:duty.id,tripNo:t.tripNo,variantIndex:t.variantIndex,startTime:t.startTime,endTime:t.endTime,line:'1',courseNo:duty.id})}}return out}
+function renderNoActiveCourse(){if(state.variant)return;$('#courseLine').textContent='—';$('#courseDest').textContent='WYBIERZ KURS';$('#courseTask').textContent='—';$('#courseStopCount').textContent='0/0';$('#courseRoad').textContent='—';$('#courseCurrent').textContent='--:-- BRAK AKTYWNEGO KURSU';$('#courseNext1').textContent='--:-- —';$('#courseNext2').textContent='--:-- —';$('#courseDelay').textContent='00:00';$('#camCurrent').textContent='—';$('#camEnd').textContent='—';$('#camDelay').textContent='00:00'}
+function renderCourses(){
+ const el=$('#coursePickerList');if(!el)return;el.innerHTML='';
+ const cs=state.rj?.courses||[];
+ if(cs.length){
+   const g=document.createElement('div');g.className='coursePickerGroup';g.textContent='Kursy z RJ';el.appendChild(g);
+   cs.forEach(c=>{const v=state.rj?.variants?.find(x=>x.index===c.variantIndex);const dir=finalDirection(v);const b=document.createElement('button');b.className='coursePickBtn';b.type='button';b.innerHTML=`<strong>Kurs ${c.courseNo||c.index+1} · linia ${c.line||v?.line||'—'}</strong><span>${dir}</span>`;b.onclick=()=>selectCourse(c);el.appendChild(b)})
+ }
+ for(const duty of MANUAL_DUTIES){
+   const entries=manualCourseEntries().filter(c=>c.task===duty.id);
+   if(!entries.length)continue;
+   const g=document.createElement('div');g.className='coursePickerGroup';g.textContent=`Kursówka ${duty.label}`;el.appendChild(g);
+   entries.forEach(c=>{const v=state.rj?.variants?.find(x=>x.index===c.variantIndex);const dir=finalDirection(v);const b=document.createElement('button');b.className='coursePickBtn manualDuty';b.type='button';b.innerHTML=`<strong>${duty.label} · przejazd ${c.tripNo}/${duty.trips.length} · ${c.startTime}–${c.endTime}</strong><span>${dir}</span>`;b.onclick=()=>selectCourse(c);el.appendChild(b)})
+ }
+ if(!cs.length&&!MANUAL_DUTIES.length)el.innerHTML='<div class="dim">Brak kursów.</div>';
+}
+function openCoursePicker(){if(!state.rj){toast('Brak wczytanego RJ');return}renderCourses();$('#coursePickerOverlay').classList.add('open');$('#coursePickerOverlay').setAttribute('aria-hidden','false')}
+function closeCoursePicker(){$('#coursePickerOverlay').classList.remove('open');$('#coursePickerOverlay').setAttribute('aria-hidden','true')}
+function selectCourse(c){
+ const v=state.rj?.variants?.find(x=>x.index===c.variantIndex);
+ if(!v){toast('Kurs nie ma przypisanego wariantu');return}
+ closeCourseStarted();state.course=c;state.variant=v;state.routeIndex=0;state.pendingStop=null;
+ state.courseDepartureAt=departureDateForCourse(c)?.getTime()??null;
+ state.courseStartedNotified=false;
+ $('#courseLine').textContent=v.line||c.line||'—';$('#courseDest').textContent=finalDirection(v).toUpperCase();
+ $('#courseTask').textContent=c.manualDuty?c.task:String(c.courseNo||c.index+1);
+ refreshCourse();closeCoursePicker();go('course');updateDepartureUI();if(!state.gpsAutoAttempted){state.gpsAutoAttempted=true;if(window.SRGNativeGPS || (!['file:','content:'].includes(location.protocol) && window.isSecureContext))startGps();}
+ // Kursy z RJ bez godziny odjazdu pozostają do ręcznej obsługi — nie wymyślamy godziny.
+ if(state.courseDepartureAt===null)toast('Brak godziny odjazdu z pierwszego przystanku');
+}
+$('#courseRailBtn').onclick=()=>{if(!state.driverLoggedIn){openDriverChange('login');return}/* KURS zawsze otwiera wybór kursówki; aktywny kurs pozostaje bez zmian do zatwierdzenia nowego */state.selectedDuty=(state.view==='dutySelect'||state.view==='tripSelect')?state.selectedDuty:(state.course?.manualDuty?state.course.task:state.selectedDuty);go('dutySelect')};$('#coursePickerClose').onclick=closeCoursePicker;$('#coursePickerOverlay').addEventListener('click',e=>{if(e.target===$('#coursePickerOverlay'))closeCoursePicker()});
+function renderVariants(){const el=$('#variantList');el.innerHTML='';if(!state.rj?.variants?.length){el.innerHTML='<span class="dim">Brak wariantów.</span>';return}state.rj.variants.forEach(v=>{const dir=finalDirection(v);const b=document.createElement('button');b.className='variantBtn';b.textContent=`Linia ${v.line} · wariant ${v.variantNo} · ${dir}`;b.onclick=()=>{state.variant=v;state.routeIndex=0;$$('.variantBtn').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('#courseLine').textContent=v.line||v.code||'—';$('#courseDest').textContent=dir.toUpperCase();refreshCourse();toast('Wybrano wariant '+v.variantNo);go('course')};el.appendChild(b)})}
+
+// RS485
+function log(msg){const el=$('#serialLog');el.textContent+=`[${new Date().toLocaleTimeString('pl-PL')}] ${msg}\n`;el.scrollTop=el.scrollHeight}
+function config(){return{baudRate:Number($('#baud').value)||9600,dataBits:8,stopBits:Number($('#stopBits').value)||1,parity:$('#parity').value||'none',flowControl:'none'}}
+function hexBytes(s){const clean=s.replace(/0x/gi,'').replace(/[^0-9a-f]/gi,'');if(clean.length%2)throw new Error('Nieparzysta liczba cyfr HEX');const a=[];for(let i=0;i<clean.length;i+=2)a.push(parseInt(clean.slice(i,i+2),16));return new Uint8Array(a)}
+function status(txt,ok=false){$('#rs485Status').textContent=txt;$('#rs485Status').style.color=ok?'#39d85c':'#f1c94b'}
+async function readLoop(){while(state.serial?.readable){try{state.reader=state.serial.readable.getReader();while(true){const {value,done}=await state.reader.read();if(done)break;if(value?.length)log('RX '+[...value].map(x=>x.toString(16).padStart(2,'0')).join(' ').toUpperCase())}}catch(e){log('RX ERR '+e.message)}finally{try{state.reader?.releaseLock()}catch(e){}state.reader=null}break}}
+$('#connectBtn').onclick=async()=>{state.mode=$('#transMode').value;if(state.mode==='mock'){state.connected=true;status('MOCK POŁĄCZONY',true);log(`MOCK RS485 ${$('#baud').value}`);return}if(!('serial'in navigator)){log('Web Serial niedostępny');toast('Brak Web Serial w tej przeglądarce / WebView');return}try{state.serial=await navigator.serial.requestPort();await state.serial.open(config());state.writer=state.serial.writable.getWriter();state.connected=true;status('USB POŁĄCZONY',true);log('USB-RS485 połączono');readLoop()}catch(e){log('CONNECT ERR '+e.message);status('BŁĄD') }};
+$('#disconnectBtn').onclick=async()=>{try{if(state.reader)await state.reader.cancel();if(state.writer){state.writer.releaseLock();state.writer=null}if(state.serial){await state.serial.close();state.serial=null}}catch(e){log('DISCONNECT '+e.message)}state.connected=false;status('ROZŁĄCZONY');log('Rozłączono')};
+$('#sendBtn').onclick=async()=>{try{const data=hexBytes($('#txHex').value);if(!data.length)return;if(state.mode==='mock'){log('TX '+[...data].map(x=>x.toString(16).padStart(2,'0')).join(' ').toUpperCase()+' [MOCK]');setTimeout(()=>log('RX 06 [MOCK ACK]'),100);return}if(!state.writer)throw new Error('Port niepołączony');await state.writer.write(data);log('TX '+[...data].map(x=>x.toString(16).padStart(2,'0')).join(' ').toUpperCase())}catch(e){log('TX ERR '+e.message);toast(e.message)}};
+$('#clearLog').onclick=()=>$('#serialLog').textContent='';$('#addrTestBtn').onclick=()=>{log('Zakres diagnostyczny R&G: adresy 17–20');if(state.mode==='mock')log('MOCK: 17, 18, 19, 20 — gotowe do testu');else log('Brak potwierdzonej ramki discovery — nie wysyłam zmyślonego polecenia')};
+$('#rs485Capability').textContent=('serial'in navigator)?'Web Serial: dostępny':'Web Serial: brak · MOCK działa';
+
+// boot default
+loadBuiltinRJ(false);renderNoActiveCourse();updateClocks();renderIdle();go('idle');setInterval(updateDepartureUI,1000);setInterval(renderRoad,5000);window.__srg={state,go,refreshCourse,loadBuiltinRJ,applyRJBuffer,finalDirection,renderCourses,openCoursePicker,closeCoursePicker,selectCourse,renderDutySelect,openTripChoice,renderTripChoice,nearestFutureIndex,dutyEntries,finishCurrentTrip,nextTripSameDuty,askLogout,openDriverChange,startGps,stopGps,departureDateForCourse,formatDepartureDifference,updateDepartureUI,closeCourseStarted,updateGpsFix,renderRoad,roadMeters,roadProjection};
+})();</script></body></html>
